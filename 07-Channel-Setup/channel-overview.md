@@ -286,6 +286,29 @@ Rate limits affect how quickly your agent can respond and how many concurrent co
 
 ---
 
+## iMessage Integration (Read-Only)
+
+OpenClaw can read iMessage/SMS conversations from the user's iMac via a lightweight relay service over Tailscale. This is a **read-only** integration -- the agent cannot send messages through iMessage. Replies go through Telegram or Twilio.
+
+**Architecture:** A FastAPI service on the iMac reads `~/Library/Messages/chat.db` (SQLite) and serves message data over Tailscale to the Mac Mini.
+
+**Use cases:**
+- Surface incoming messages in proactive check-ins
+- Cross-reference message senders with CRM contacts
+- Provide conversation context when user asks "What did X say about Y?"
+
+**Key constraints:**
+- Requires Full Disk Access (TCC) on the iMac
+- Read-only (no sending via chat.db)
+- Privacy-sensitive: message content processed in memory only, not persisted
+
+**Full documentation:**
+- [chat.db Schema](imessage/chat-db-schema.md)
+- [Relay Architecture](imessage/imessage-relay-architecture.md)
+- [Privacy Considerations](imessage/privacy-considerations.md)
+
+---
+
 ## Next Steps
 
 Set up each channel by following the dedicated guides in this section:
@@ -295,3 +318,4 @@ Set up each channel by following the dedicated guides in this section:
 3. [Slack App](slack-app.md) -- Professional team channel
 4. [WhatsApp Business](whatsapp-business.md) -- Client communication
 5. [Discord Bot](discord-bot.md) -- Community and team alternative
+6. [iMessage](imessage/) -- Read-only iMessage/SMS relay from iMac

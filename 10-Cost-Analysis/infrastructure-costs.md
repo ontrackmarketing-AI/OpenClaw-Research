@@ -181,6 +181,54 @@ Use **$1,900** as the planning number (assumes you have a spare monitor or run h
 
 ---
 
+## Windows Desktop (Screen Capture Infrastructure)
+
+The OCR screen database capability (see [Screen Database](../08-Capabilities-Deep-Dive/screen-database/windows-capture-pipeline.md)) runs on the user's existing Windows desktop. No additional hardware purchase is required.
+
+### Software Requirements (All Free)
+
+| Software | Purpose | Cost |
+|----------|---------|------|
+| Python 3.11+ | Capture service runtime | $0 |
+| Tesseract OCR | Text extraction from screenshots | $0 (open source) |
+| mss (Python) | Screenshot capture library | $0 |
+| pygetwindow | Active window detection | $0 |
+| SQLite | Local capture database | $0 |
+
+### Resource Usage on Windows Desktop
+
+| Resource | Impact |
+|----------|--------|
+| CPU | ~2-5% sustained (OCR processing every 30 seconds) |
+| RAM | ~100-200 MB (Python process + Tesseract) |
+| Disk (images) | ~100-150 MB/day (JPEG at 75% quality, 30-day retention) |
+| Disk (SQLite) | ~5-10 MB/day (OCR text + FTS5 index) |
+| Network | ~4-12 MB/day upload to Supabase (OCR text + metadata) |
+
+### Impact on Supabase Costs
+
+Screen capture data is stored in Supabase alongside other OpenClaw data.
+
+| Supabase Tier | Storage Included | Screen Data Per Month | Sufficient? |
+|--------------|-----------------|----------------------|-------------|
+| Free | 500 MB | 210-360 MB | Tight -- ~1-2 months before exceeding |
+| Pro ($25/mo) | 8 GB | 210-360 MB | Yes -- covers 12+ months easily |
+
+The Supabase Pro tier is already recommended for OpenClaw in general. Screen capture data does not change that recommendation.
+
+### iMac (iMessage Relay Infrastructure)
+
+The iMessage relay service (see [iMessage Relay Architecture](../07-Channel-Setup/imessage/imessage-relay-architecture.md)) runs on the user's existing iMac where iMessage is synced. No additional hardware required.
+
+| Resource | Impact |
+|----------|--------|
+| CPU | Negligible (~0.1%, periodic SQLite reads) |
+| RAM | ~30-50 MB (FastAPI service) |
+| Disk | None (reads existing chat.db, no new storage) |
+| Network | Minimal (Tailscale mesh traffic, text-only payloads) |
+
+---
+
 ## Action Items
 
 1. **Order the Mac Mini M4 Pro 48GB/1TB ($1,799)** from Apple or authorized reseller.

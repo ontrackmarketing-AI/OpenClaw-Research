@@ -378,6 +378,19 @@ Set this up immediately after the Web UI. It will become your most-used channel.
 
 ---
 
+## Proactive Check-ins (3-5x Daily)
+
+The Telegram bot is the delivery channel for the proactive check-in system. The agent reaches out 3-5 times per day with context-aware questions and updates.
+
+**Key configuration in this file:** The `quiet_hours` setting under `group_settings` (22:00-08:00) is respected by the check-in engine -- no check-ins fire during quiet hours.
+
+**Full documentation:**
+- [Check-in Engine](../08-Capabilities-Deep-Dive/proactive-checkins/checkin-engine.md) -- scheduling, adaptive timing, calendar integration
+- [Conversational Design](../08-Capabilities-Deep-Dive/proactive-checkins/conversational-design.md) -- prompt templates per time slot
+- [Context Sources](../08-Capabilities-Deep-Dive/proactive-checkins/context-sources.md) -- data sources for personalized check-ins
+
+---
+
 ## Troubleshooting
 
 | Issue | Cause | Solution |

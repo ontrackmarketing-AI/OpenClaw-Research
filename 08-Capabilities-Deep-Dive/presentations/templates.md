@@ -367,6 +367,28 @@ TEMPLATE_SELECTION_RULES = {
 5. Test with sample data before production use
 6. Log the template change in the decisions log
 
+## Gamma AI Alternative
+
+For presentations where design quality is the priority and strict template control is not required, OpenClaw can generate presentations through the **Gamma MCP integration** instead of python-pptx templates.
+
+**When to use Gamma instead of templates:**
+- Client-facing decks where visual design matters more than exact template control
+- Quick turnaround requests (Gamma generates a full deck in under 3 minutes)
+- Presentations for industries where you do not have a pre-built template
+- When the user requests "make it look good" without specifying a template
+
+**When to use python-pptx templates:**
+- Strict branding requirements with pixel-precise layouts
+- Recurring reports that must look identical month to month
+- Offline generation without internet dependency
+- Presentations that embed complex custom charts or data visualizations
+
+See [Gamma MCP Integration](gamma-mcp-integration.md) for full details on the Gamma path, including trigger design, theme selection, and HITL approval flow.
+
+See [Gamma Presentation Skill](../../05-Skills-Development/priority-skills/gamma-presentation-skill.md) for the OpenClaw skill definition.
+
+---
+
 ## Quality Assurance Checklist
 
 Before deploying a new template:

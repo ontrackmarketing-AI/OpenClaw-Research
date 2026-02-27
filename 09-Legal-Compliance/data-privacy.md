@@ -292,6 +292,37 @@ When someone requests deletion of their data:
 
 ---
 
+## 8. iMessage Data Processing
+
+Reading the user's iMessage/SMS conversations introduces additional privacy considerations beyond standard B2B marketing data.
+
+**Key points:**
+- Texas one-party consent law (Tex. Penal Code 16.02) permits reading your own conversations
+- Other parties' messages are personal data under GDPR/CCPA if those individuals are in covered jurisdictions
+- Message content must not be persisted to databases -- process in working memory only
+- Contact information from iMessages must not be used for marketing without separate consent
+- Medical, legal, and financial contacts should be excluded from processing
+
+**Detailed analysis:** See [iMessage Privacy Considerations](../07-Channel-Setup/imessage/privacy-considerations.md).
+
+---
+
+## 9. OCR Screen Capture Data
+
+Continuous screen capture on the user's Windows desktop creates a record of everything displayed on screen, including potentially sensitive content.
+
+**Key points:**
+- Screen captures may contain banking interfaces, passwords, medical records, or personal communications from other people
+- Privacy overlays must exclude sensitive application windows (banking apps, password managers)
+- Data must be encrypted at rest and in transit
+- User must have easy pause/resume/delete controls
+- Retention policies must be enforced (raw captures expire, summaries retained longer)
+- No screen capture data should be shared with third parties
+
+**Detailed analysis:** See [Screen Database Privacy & Security](../08-Capabilities-Deep-Dive/screen-database/privacy-security.md).
+
+---
+
 ## References
 
 - GDPR Full Text: https://gdpr-info.eu/

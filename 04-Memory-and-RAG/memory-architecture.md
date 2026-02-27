@@ -420,6 +420,34 @@ memory:
 
 ---
 
+## External Memory Sources
+
+### iMessage Conversations (Read-Only)
+
+The agent can query the user's iMessage/SMS history via the iMessage relay running on the iMac. Message content is processed in working memory only -- it is NOT persisted in the memory system. Only metadata (sender, timestamp, existence of conversation) is logged.
+
+See [iMessage Relay Architecture](../07-Channel-Setup/imessage/imessage-relay-architecture.md).
+
+### OCR Screen Database
+
+Continuous screen captures from the user's Windows desktop are stored in Supabase with pgvector embeddings. This provides a searchable record of what the user was looking at and when.
+
+**Integration with memory hierarchy:**
+- Screen data lives in Supabase (external to the file-first memory system)
+- Daily screen activity summaries are written to `memory/logs/YYYY/MM/DD.md` alongside session logs
+- The `screen_recall` tool queries Supabase directly for real-time searches
+- Screen context feeds proactive check-ins (app usage, active work detection)
+
+See [Screen Database Storage & Indexing](../08-Capabilities-Deep-Dive/screen-database/storage-indexing.md).
+
+### Self-Evolution Metrics
+
+The self-evolution system tracks performance metrics (task success rate, approval rate, error frequency) in the memory system. These metrics inform prompt optimization and skill auto-generation.
+
+See [Self-Evolution Architecture](../12-Self-Evolution/evolution-architecture.md).
+
+---
+
 ## Implementation Priority
 
 For the OpenClaw MVP, implement memory in this order:

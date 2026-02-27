@@ -18,6 +18,7 @@ public schema
   |-- enrichment_cache         (cached enrichment results)
   |-- credit_usage             (Clay credit tracking)
   |-- pipeline_snapshots       (daily pipeline state for reporting)
+  |-- screen_captures          (OCR screen capture data with pgvector embeddings)
 ```
 
 ---
@@ -448,6 +449,168 @@ CREATE INDEX idx_cache_type ON enrichment_cache(data_type);
 CREATE INDEX idx_cache_expires ON enrichment_cache(expires_at);
 ```
 
+### 9. credit_usage
+
+Clay credit tracking for enrichment cost management.
+
+```sql
+CREATE TABLE credit_usage (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+
+    -- Service
+    service TEXT NOT NULL,          -- 'clay', 'zerobounce', etc.
+    operation TEXT NOT NULL,        -- 'enrich_lead', 'verify_email', etc.
+
+    -- Usage
+    credits_used NUMERIC NOT NULL,
+    cost_usd NUMERIC,
+
+    -- Context
+    lead_id UUID REFERENCES leads(id),
+    session_id UUID REFERENCES sessions(id),
+
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_credit_service ON credit_usage(service);
+CREATE INDEX idx_credit_created ON credit_usage(created_at DESC);
+```
+
+### 10. pipeline_snapshots
+
+Daily pipeline state for reporting and trend analysis.
+
+```sql
+CREATE TABLE pipeline_snapshots (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+
+    snapshot_date DATE NOT NULL DEFAULT CURRENT_DATE,
+
+    -- Pipeline counts by stage
+    stage_counts JSONB NOT NULL DEFAULT '{}',
+    /*
+    {
+        "new": 45,
+        "enriching": 12,
+        "qualified": 28,
+        "contacted": 15,
+        "meeting_booked": 3,
+        "proposal_sent": 2
+    }
+    */
+
+    -- Metrics
+    total_leads INTEGER,
+    hot_leads INTEGER,
+    warm_leads INTEGER,
+    cold_leads INTEGER,
+    conversion_rate NUMERIC,
+
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+
+    UNIQUE(snapshot_date)
+);
+
+CREATE INDEX idx_snapshot_date ON pipeline_snapshots(snapshot_date DESC);
+```
+
+### 11. screen_captures
+
+OCR screen capture data from the user's Windows desktop. Supports hybrid vector + full-text search for natural language recall queries.
+
+```sql
+-- Requires: CREATE EXTENSION IF NOT EXISTS vector;
+
+CREATE TABLE screen_captures (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+
+    -- Capture metadata
+    captured_at TIMESTAMPTZ NOT NULL,
+    source_device TEXT NOT NULL DEFAULT 'windows_desktop',
+    monitor_index INTEGER DEFAULT 0,
+
+    -- Context
+    window_title TEXT,
+    app_name TEXT,
+
+    -- OCR content
+    ocr_text TEXT NOT NULL,
+    content_hash TEXT,              -- MD5 of OCR text for dedup
+
+    -- Vector embedding (768-dim for nomic-embed-text via Ollama)
+    embedding vector(768),
+
+    -- Sync metadata
+    synced_at TIMESTAMPTZ DEFAULT NOW(),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Indexes
+CREATE INDEX idx_screen_captures_time ON screen_captures(captured_at DESC);
+CREATE INDEX idx_screen_captures_app ON screen_captures(app_name);
+CREATE INDEX idx_screen_captures_device ON screen_captures(source_device);
+CREATE INDEX idx_screen_captures_hash ON screen_captures(content_hash);
+
+-- Vector similarity search index
+CREATE INDEX idx_screen_captures_embedding
+    ON screen_captures USING ivfflat (embedding vector_cosine_ops)
+    WITH (lists = 50);
+
+-- Full-text search
+CREATE INDEX idx_screen_captures_text
+    ON screen_captures USING GIN (to_tsvector('english', ocr_text));
+```
+
+**RPC function for hybrid search:**
+
+```sql
+CREATE OR REPLACE FUNCTION search_screen_captures(
+    query_text TEXT,
+    query_embedding vector(768),
+    match_threshold FLOAT DEFAULT 0.7,
+    match_count INT DEFAULT 10,
+    time_start TIMESTAMPTZ DEFAULT NULL,
+    time_end TIMESTAMPTZ DEFAULT NULL,
+    filter_app TEXT DEFAULT NULL
+)
+RETURNS TABLE (
+    id UUID,
+    captured_at TIMESTAMPTZ,
+    window_title TEXT,
+    app_name TEXT,
+    ocr_text TEXT,
+    vector_similarity FLOAT,
+    text_rank FLOAT,
+    combined_score FLOAT
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        sc.id, sc.captured_at, sc.window_title, sc.app_name, sc.ocr_text,
+        1 - (sc.embedding <=> query_embedding) AS vector_similarity,
+        ts_rank(to_tsvector('english', sc.ocr_text),
+                plainto_tsquery('english', query_text)) AS text_rank,
+        (0.6 * (1 - (sc.embedding <=> query_embedding)) +
+         0.4 * ts_rank(to_tsvector('english', sc.ocr_text),
+                       plainto_tsquery('english', query_text))) AS combined_score
+    FROM screen_captures sc
+    WHERE
+        (1 - (sc.embedding <=> query_embedding)) > match_threshold
+        AND (time_start IS NULL OR sc.captured_at >= time_start)
+        AND (time_end IS NULL OR sc.captured_at <= time_end)
+        AND (filter_app IS NULL OR sc.app_name ILIKE '%' || filter_app || '%')
+    ORDER BY combined_score DESC
+    LIMIT match_count;
+END;
+$$;
+```
+
+See [Screen Database Storage & Indexing](../../08-Capabilities-Deep-Dive/screen-database/storage-indexing.md) for full details on chunking, retention, and query patterns.
+
+```
+
 ---
 
 ## Relationships
@@ -460,6 +623,9 @@ sessions (1) --> (0..N) skill_logs      -- A session contains multiple skill exe
 documents (standalone)                  -- RAG documents, queried independently
 content_calendar (standalone)           -- Content items, may link to clients
 enrichment_cache (standalone)           -- Cache layer, queried by domain
+screen_captures (standalone)            -- OCR screen data, queried by time/text/vector
+credit_usage (standalone)               -- Credit tracking, linked to leads/sessions
+pipeline_snapshots (standalone)         -- Daily pipeline state snapshots
 ```
 
 ---
@@ -515,3 +681,5 @@ psql $DATABASE_URL -f migrations/001_initial_schema.sql
 - [ ] Decide on JSONB vs separate columns for frequently queried enrichment fields
 - [ ] Plan for table partitioning if lead volume exceeds 1M records
 - [ ] Design archival strategy for old leads and sessions
+- [ ] Tune ivfflat `lists` parameter for screen_captures as data volume grows (currently 50, increase at ~10K+ rows)
+- [ ] Evaluate screen_captures retention automation (auto-delete OCR text > 90 days, keep daily summaries)

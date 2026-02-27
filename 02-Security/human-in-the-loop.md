@@ -474,6 +474,37 @@ Only relax message sending after significant trust is established.
 
 ---
 
+## Self-Evolution HITL Integration
+
+The self-evolution system (see [Self-Evolution Architecture](../12-Self-Evolution/evolution-architecture.md)) introduces a new class of actions that require HITL consideration: the agent modifying its own configuration.
+
+### Self-Evolution Action Classification
+
+| Action | Tier | Approval Policy |
+|--------|------|-----------------|
+| Collect performance metrics | GREEN (Auto-approve) | Internal data processing, no side effects |
+| Generate weekly evaluation report | GREEN (Auto-approve) | Informational only |
+| Propose prompt rewrite | YELLOW (Conditional) | Auto-approve after 24h if regression tests pass |
+| Apply prompt rewrite (canary) | YELLOW (Conditional) | Auto-approve for canary phase; promote requires review |
+| Create new skill (auto-generated) | RED (Always require) | New capabilities must be human-approved |
+| Install community skill from ClawHub | RED (Always require) | External code requires explicit approval |
+| Change model routing | YELLOW (Conditional) | Notify, auto-approve after 12h if no objection |
+| Rollback a change | GREEN (Auto-approve) | Safety operation, always beneficial |
+| Modify approval policy | **PROHIBITED** | Evolution system cannot weaken HITL requirements |
+
+### Immutable HITL Rules for Self-Evolution
+
+These rules are enforced at the code level, not just the prompt level. The self-evolution system cannot override them:
+
+1. **No Tier promotion without human approval.** The evolution system cannot move any action from Tier 1 (RED) to Tier 2 (GREEN) or Tier 3 (YELLOW).
+2. **No new external-facing capabilities without approval.** Any skill that sends messages, makes API calls to new services, or accesses new data sources requires explicit approval.
+3. **Mandatory 48-hour measurement.** Every applied change must be monitored for 48 hours with automatic rollback if regression is detected.
+4. **Rate limits enforced.** Maximum 1 prompt change per day, 3 per week. Maximum 3 new skill installations per week.
+
+See [Safety Guardrails](../12-Self-Evolution/safety-guardrails.md) for the full seven-layer safety architecture.
+
+---
+
 ## Metrics to Track
 
 | Metric | What It Tells You | Action if Abnormal |

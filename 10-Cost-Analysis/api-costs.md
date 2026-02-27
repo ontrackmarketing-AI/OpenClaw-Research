@@ -212,7 +212,8 @@ At higher volumes (2,000+ leads/month): $40-80/mo
 | Platform | Airtable (free) | $0 |
 | Platform | Vercel (free) | $0 |
 | Platform | Tailscale | $0 |
-| **Total** | | **$183/mo** |
+| Content | Gamma (Plus) | $10 |
+| **Total** | | **$193/mo** |
 
 ### Moderate Estimate (Growing Volume, Some Paid Tiers)
 | Category | Service | Monthly Cost |
@@ -231,7 +232,8 @@ At higher volumes (2,000+ leads/month): $40-80/mo
 | Platform | Airtable (free) | $0 |
 | Platform | Vercel (free) | $0 |
 | Platform | Tailscale | $0 |
-| **Total** | | **$328/mo** |
+| Content | Gamma (Plus) | $10 |
+| **Total** | | **$338/mo** |
 
 ### High Estimate (High Volume, Full Paid Tiers)
 | Category | Service | Monthly Cost |
@@ -250,7 +252,8 @@ At higher volumes (2,000+ leads/month): $40-80/mo
 | Platform | Airtable (Team) | $20 |
 | Platform | Vercel (Pro) | $20 |
 | Platform | Tailscale | $0 |
-| **Total** | | **$483/mo** |
+| Content | Gamma (Pro) | $20 |
+| **Total** | | **$503/mo** |
 
 ---
 
@@ -278,6 +281,17 @@ At higher volumes (2,000+ leads/month): $40-80/mo
 | 2,000 leads | ~$420 | $0.21/lead |
 
 Economies of scale are significant. The more leads you process, the cheaper each lead becomes because fixed costs are spread across more units.
+
+---
+
+## Gamma (AI Presentations) -- $10-20/mo
+
+- **New cost with OpenClaw** (for autonomous presentation generation via Gamma MCP).
+- Plus tier ($10/mo): Unlimited generations, unlimited AI images, PPTX/PDF export without watermark.
+- Pro tier ($20/mo): Premium AI image models, custom branding, advanced features.
+- **Recommendation:** Start with Plus ($10/mo). Upgrade to Pro if generating 10+ client-facing decks per month.
+- Used in: Pitch decks, monthly reports, strategy proposals, competitor analyses.
+- See [Gamma MCP Integration](../08-Capabilities-Deep-Dive/presentations/gamma-mcp-integration.md) for details.
 
 ---
 

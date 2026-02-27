@@ -508,6 +508,35 @@ services:
 
 ---
 
+## Cross-Machine Services Over Tailscale
+
+### iMessage Relay (iMac -> Mac Mini)
+
+The iMessage relay runs on the iMac and exposes a REST API for the Mac Mini to query. Security configuration:
+
+- **Bind:** `127.0.0.1:8199` (localhost only)
+- **Expose:** `tailscale serve --bg 8199` (Tailscale-only access)
+- **ACL:** Restrict to Mac Mini only in Tailscale admin console
+- **Auth:** No API key needed (Tailscale identity provides authentication)
+- **Data:** Message content travels encrypted over WireGuard tunnel
+
+```json
+// Tailscale ACL for iMessage relay
+{
+  "acls": [
+    {"action": "accept", "src": ["mac-mini"], "dst": ["imac:8199"]}
+  ]
+}
+```
+
+See [iMessage Relay Architecture](../07-Channel-Setup/imessage/imessage-relay-architecture.md) for full details.
+
+### OCR Screen Database (Windows -> Mac Mini)
+
+The Windows desktop captures screen data and pushes to the Mac Mini or directly to Supabase. See [Screen Database Data Pipeline](../08-Capabilities-Deep-Dive/screen-database/data-pipeline.md) for network security details.
+
+---
+
 ## Network Security Checklist
 
 - [ ] Docker ports bound to `127.0.0.1` only (not `0.0.0.0`)
@@ -523,3 +552,6 @@ services:
 - [ ] No host networking in Docker configuration
 - [ ] Docker network mode is custom bridge (not default bridge, not host)
 - [ ] Verified: cannot reach OpenClaw from non-Tailscale device
+- [ ] iMessage relay (if enabled): bound to 127.0.0.1, exposed via tailscale serve only
+- [ ] iMessage relay ACL restricts access to Mac Mini only
+- [ ] OCR screen database pipeline (if enabled): encrypted transit, access controlled

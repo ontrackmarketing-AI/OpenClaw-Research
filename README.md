@@ -30,16 +30,17 @@ OpenClaw (formerly Clawdbot -> Moltbot -> OpenClaw) is the **#1 trending open-so
 |---|---------|-------------|-------|
 | 00 | [Foundation](00-Foundation/) | Architecture, concepts, history, comparisons | 4 |
 | 01 | [Mac Mini Setup](01-Mac-Mini-Setup/) | Hardware, OS, Docker, env vars, verification | 7 |
-| 02 | [Security](02-Security/) | Threat model, Docker hardening, VPN, credentials | 7 |
+| 02 | [Security](02-Security/) | Threat model, Docker hardening, VPN, credentials, HITL | 7 |
 | 03 | [LLM Strategy](03-LLM-Strategy/) | Model routing, Ollama, Claude API, cost optimization | 5 |
 | 04 | [Memory & RAG](04-Memory-and-RAG/) | File-first memory, hybrid search, embeddings, sector knowledge | 10 |
-| 05 | [Skills Development](05-Skills-Development/) | Skills architecture, ClawHub, custom skills, migrations | 12 |
+| 05 | [Skills Development](05-Skills-Development/) | Skills architecture, ClawHub, custom skills, Gamma skill | 13 |
 | 06 | [Integrations](06-Integrations/) | GHL, Clay, Supabase, n8n, Airtable, existing projects | 20 |
-| 07 | [Channel Setup](07-Channel-Setup/) | WhatsApp, Telegram, Discord, Slack, web UI | 6 |
-| 08 | [Capabilities Deep Dive](08-Capabilities-Deep-Dive/) | Presentations, CRM, enrichment, websites, LinkedIn, scraping | 22 |
+| 07 | [Channel Setup](07-Channel-Setup/) | WhatsApp, Telegram, Discord, Slack, web UI, iMessage | 10 |
+| 08 | [Capabilities Deep Dive](08-Capabilities-Deep-Dive/) | Presentations, CRM, enrichment, screen DB, check-ins, scraping | 32 |
 | 09 | [Legal & Compliance](09-Legal-Compliance/) | Privacy law, ToS compliance, scraping legality | 5 |
 | 10 | [Cost Analysis](10-Cost-Analysis/) | Infrastructure, API, stack costs, ROI | 5 |
-| 11 | [Implementation Roadmap](11-Implementation-Roadmap/) | 8-phase rollout plan, week-by-week | 8 |
+| 11 | [Implementation Roadmap](11-Implementation-Roadmap/) | 13-phase rollout plan, week-by-week | 13 |
+| 12 | [Self-Evolution](12-Self-Evolution/) | Prompt optimization, skill auto-generation, safety guardrails | 5 |
 
 ---
 
@@ -85,6 +86,11 @@ Three major risks:
 | 6 | Channels (WhatsApp, Telegram, web UI) | Week 5-6 |
 | 7 | Advanced (LinkedIn, scraping, websites) | Week 6-8 |
 | 8 | Performance tuning, cost optimization | Ongoing |
+| 9 | Proactive check-ins (Telegram, 3-5x/day) | Week 9-10 |
+| 10 | Gamma presentation automation | Week 10-11 |
+| 11 | iMessage integration (read-only relay) | Week 11-12 |
+| 12 | OCR screen database (Windows capture) | Week 12-14 |
+| 13 | Self-evolution (prompt optimization, skill auto-gen) | Week 14-18 |
 
 See [11-Implementation-Roadmap/](11-Implementation-Roadmap/) for detailed phase plans.
 
@@ -97,6 +103,11 @@ See [11-Implementation-Roadmap/](11-Implementation-Roadmap/) for detailed phase 
 - Cost modeling for your specific API usage patterns
 - Testing OpenClaw skill migration from Claude Code skill format
 - Tailscale setup specifics for your network topology
+- ScreenPipe Windows stability for potential replacement of custom capture pipeline
+- Gamma API rate limits and pricing tiers under load
+- Google Calendar API integration for check-in calendar awareness
+- DSPy integration feasibility for automated prompt optimization
+- ClawHub API documentation for programmatic skill discovery
 
 ---
 

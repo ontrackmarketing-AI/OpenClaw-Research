@@ -223,5 +223,92 @@ N/A (stays as-is):         1 item   =  15%   [OnTrack Marketing - enhanced, not 
 
 ---
 
-*Last updated: 2026-02-05*
+---
+
+## New Capabilities Gap Analysis (Phase 9-13)
+
+Five additional capabilities have been researched and documented. These extend the platform beyond the core marketing/lead-gen use case.
+
+| # | Capability | Current Status | Gap Status | Priority | Effort |
+|---|-----------|---------------|------------|----------|--------|
+| 11 | **Proactive Check-ins** (Telegram, 3-5x/day) | Not implemented | **Missing** | P1 | 8-12h |
+| 12 | **Gamma Presentation Automation** | Not implemented (python-pptx documented) | **Partial** | P2 | 6-8h |
+| 13 | **iMessage Integration** (read-only relay) | Not implemented | **Missing** | P2 | 8-12h |
+| 14 | **OCR Screen Database** (Windows capture) | Not implemented | **Missing** | P2 | 14-20h |
+| 15 | **Full Self-Evolution** (prompt/skill auto-improvement) | Not implemented | **Missing** | P3 | 16-24h |
+
+### 11. Proactive Check-ins -- MISSING -- P1
+
+**What it does:** Agent reaches out via Telegram 3-5 times daily, context-aware based on time of day, recent activity, pending tasks, and calendar.
+
+**Dependencies:** Existing Telegram bot infrastructure, LaunchAgent cron, memory system.
+
+**Gap details:**
+- Check-in engine with adaptive timing: [checkin-engine.md](08-Capabilities-Deep-Dive/proactive-checkins/checkin-engine.md)
+- Conversational design (template pools, anti-repetition): [conversational-design.md](08-Capabilities-Deep-Dive/proactive-checkins/conversational-design.md)
+- Context assembly pipeline: [context-sources.md](08-Capabilities-Deep-Dive/proactive-checkins/context-sources.md)
+- Google Calendar API integration needed for calendar awareness
+
+### 12. Gamma Presentation Automation -- PARTIAL -- P2
+
+**What it does:** Agent autonomously creates presentations using Gamma's MCP tools, triggered by CRM events, schedules, or user requests.
+
+**What exists:** python-pptx template system already documented. Gamma provides a higher-quality, faster alternative.
+
+**Gap details:**
+- Gamma MCP integration: [gamma-mcp-integration.md](08-Capabilities-Deep-Dive/presentations/gamma-mcp-integration.md)
+- Gamma presentation skill: [gamma-presentation-skill.md](05-Skills-Development/priority-skills/gamma-presentation-skill.md)
+- Decision matrix: Gamma for quick/beautiful, python-pptx for full customization
+
+### 13. iMessage Integration -- MISSING -- P2
+
+**What it does:** Agent reads iMessage/SMS history from the iMac's chat.db via a FastAPI relay over Tailscale. Read-only -- no sending.
+
+**Gap details:**
+- chat.db schema documented: [chat-db-schema.md](07-Channel-Setup/imessage/chat-db-schema.md)
+- Relay architecture: [imessage-relay-architecture.md](07-Channel-Setup/imessage/imessage-relay-architecture.md)
+- Privacy considerations: [privacy-considerations.md](07-Channel-Setup/imessage/privacy-considerations.md)
+- Requires macOS Full Disk Access permission on iMac
+- Tailscale cross-machine networking documented
+
+### 14. OCR Screen Database -- MISSING -- P2
+
+**What it does:** Continuous screen capture + OCR on Windows desktop, searchable by the agent. "What was I looking at when working on X?"
+
+**Gap details:**
+- Tool comparison (ScreenPipe vs custom): [tool-comparison.md](08-Capabilities-Deep-Dive/screen-database/tool-comparison.md)
+- Windows capture pipeline: [windows-capture-pipeline.md](08-Capabilities-Deep-Dive/screen-database/windows-capture-pipeline.md)
+- Data pipeline to Supabase: [data-pipeline.md](08-Capabilities-Deep-Dive/screen-database/data-pipeline.md)
+- Storage and hybrid search: [storage-indexing.md](08-Capabilities-Deep-Dive/screen-database/storage-indexing.md)
+- Query interface: [query-interface.md](08-Capabilities-Deep-Dive/screen-database/query-interface.md)
+- Privacy and security: [privacy-security.md](08-Capabilities-Deep-Dive/screen-database/privacy-security.md)
+
+### 15. Full Self-Evolution -- MISSING -- P3
+
+**What it does:** Agent continuously improves itself -- rewrites prompts, creates new skills, discovers tools, expands capabilities. All changes go through notification and approval.
+
+**Gap details:**
+- Evolution architecture: [evolution-architecture.md](12-Self-Evolution/evolution-architecture.md)
+- Prompt optimization: [prompt-optimization.md](12-Self-Evolution/prompt-optimization.md)
+- Skill auto-generation: [skill-auto-generation.md](12-Self-Evolution/skill-auto-generation.md)
+- Safety guardrails: [safety-guardrails.md](12-Self-Evolution/safety-guardrails.md)
+- Notification system: [notification-system.md](12-Self-Evolution/notification-system.md)
+- Most complex capability -- requires all other systems to be stable first
+
+---
+
+## Updated Readiness Breakdown
+
+```
+Ready (minimal work):      4 items  =  27%   [GHL MCP, N8N, Supabase, Airtable]
+Partial (moderate work):   6 items  =  40%   [Ralph, Rise Local, RAFE, Skills, Cost, Gamma]
+Missing (significant):     5 items  =  33%   [Clay connector, Check-ins, iMessage, Screen DB, Self-Evolution]
+```
+
+**Total estimated integration effort (original + new): 105-156 hours**
+**Recommended timeline: 14-18 weeks with focused effort**
+
+---
+
+*Last updated: 2026-02-26*
 *Review this analysis after each major migration milestone.*
