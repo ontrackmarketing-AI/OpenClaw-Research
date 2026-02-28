@@ -37,7 +37,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 Plans:
 - [x] 01-01-PLAN.md -- Docker stack (PostgreSQL, Redis, Qdrant, n8n), Ollama models, Tailscale serve [Wave 1]
 - [ ] 01-02-PLAN.md -- n8n proxy workflows (6 proxies + sanitizer), HITL tier enforcement [Wave 2]
-- [ ] 01-03-PLAN.md -- Cost circuit breakers, context window safety, emergency stop [Wave 2]
+- [x] 01-03-PLAN.md -- Cost circuit breakers, context window safety, emergency stop [Wave 2]
 
 ### Phase 2: Memory and Model Routing
 **Goal**: Agent has persistent memory with hybrid search and intelligent model selection -- every subsequent skill can store, recall, and route requests cost-effectively
