@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Infrastructure
 
-- [ ] **INFR-01**: OpenClaw v2026.2.25+ running in Docker with PostgreSQL 16, Redis 7, Qdrant, and n8n on openclaw-net bridge
-- [ ] **INFR-02**: All containers hardened (non-root UID 1000, read-only FS, tmpfs noexec, all caps dropped, PID limit 200)
-- [ ] **INFR-03**: All Docker ports bound to 127.0.0.1 only -- no public exposure
-- [ ] **INFR-04**: Ollama running on host with qwen3:14b and nomic-embed-text models loaded
-- [ ] **INFR-05**: Tailscale VPN configured with ACLs restricting access to ports 3000, 18789, 5678, 22
+- [x] **INFR-01**: OpenClaw v2026.2.25+ running in Docker with PostgreSQL 16, Redis 7, Qdrant, and n8n on openclaw-net bridge
+- [x] **INFR-02**: All containers hardened (non-root UID 1000, read-only FS, tmpfs noexec, all caps dropped, PID limit 200)
+- [x] **INFR-03**: All Docker ports bound to 127.0.0.1 only -- no public exposure
+- [x] **INFR-04**: Ollama running on host with qwen3:14b and nomic-embed-text models loaded
+- [x] **INFR-05**: Tailscale VPN configured with ACLs restricting access to ports 3000, 18789, 5678, 22
 
 ### Security
 
@@ -129,11 +129,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| INFR-01 | Phase 1 | Pending |
-| INFR-02 | Phase 1 | Pending |
-| INFR-03 | Phase 1 | Pending |
-| INFR-04 | Phase 1 | Pending |
-| INFR-05 | Phase 1 | Pending |
+| INFR-01 | Phase 1 | Complete |
+| INFR-02 | Phase 1 | Complete |
+| INFR-03 | Phase 1 | Complete |
+| INFR-04 | Phase 1 | Complete |
+| INFR-05 | Phase 1 | Complete |
 | SECR-01 | Phase 1 | Pending |
 | SECR-02 | Phase 1 | Pending |
 | SECR-03 | Phase 1 | Pending |

@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-27)
 ## Current Position
 
 Phase: 1 of 7 (Secure Infrastructure)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-02-28 -- Roadmap created (7 phases, 51 requirements mapped)
+Plan: 1 of 3 in current phase
+Status: Executing phase
+Last activity: 2026-02-28 -- Completed 01-01-PLAN.md (Docker stack, Ollama, Tailscale)
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 5%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: cross-session (checkpoint-gated)
+- Total execution time: ~1 session
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-secure-infrastructure | 1/3 | cross-session | - |
 
 **Recent Trend:**
-- Last 5 plans: -
-- Trend: -
+- Last 5 plans: 01-01 (cross-session)
+- Trend: First plan complete
 
 *Updated after each plan completion*
 
@@ -46,6 +46,11 @@ Recent decisions affecting current work:
 - [Roadmap]: Memory and Model Routing combined into Phase 2 -- both are foundational services consumed by all skills
 - [Roadmap]: iMessage (COMM-05, COMM-06) placed in Phase 4 with Task Management -- iMessage is a context source for todos and check-ins, not a communication channel to build separately
 - [Roadmap]: OCR Screen Watching deferred to Phase 7 -- high privacy surface, requires mature check-in system to enrich
+- [01-01]: n8n pinned to v2.5.2 for CVE-2026-25049 -- no "latest" tag for security-critical services
+- [01-01]: All Docker ports bound to 127.0.0.1 only -- Tailscale is the sole remote access path
+- [01-01]: Tailscale ACLs deferred -- personal tailnet, defense-in-depth only (single user, no multi-user risk)
+- [01-01]: Tailscale serve root path to n8n (port 5678) -- dashboard not yet running, will reconfigure when needed
+- [01-01]: Qdrant and n8n given tmpfs mounts for read-only FS compatibility
 
 ### Pending Todos
 
@@ -61,5 +66,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Roadmap created, ready to plan Phase 1
+Stopped at: Completed 01-01-PLAN.md (Docker stack, Ollama, Tailscale)
 Resume file: None
