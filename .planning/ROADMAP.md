@@ -32,12 +32,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A simulated RED-tier action (e.g., delete request) is blocked with no approval path that bypasses HITL -- YELLOW and GREEN tiers route correctly
   4. Anthropic API calls halt when the $50/month cap or 50-tool-call session limit is reached -- circuit breaker triggers are visible in logs
   5. A 55-turn context exhaustion test confirms all pinned safety directives survive compaction -- verification loop halts the session if any directive disappears
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 01-01: Docker stack and Ollama setup
-- [ ] 01-02: Security hardening and n8n proxy
-- [ ] 01-03: HITL policy, cost breakers, and context safety
+- [ ] 01-01-PLAN.md -- Docker stack (PostgreSQL, Redis, Qdrant, n8n), Ollama models, Tailscale serve [Wave 1]
+- [ ] 01-02-PLAN.md -- n8n proxy workflows (6 proxies + sanitizer), HITL tier enforcement [Wave 2]
+- [ ] 01-03-PLAN.md -- Cost circuit breakers, context window safety, emergency stop [Wave 2]
 
 ### Phase 2: Memory and Model Routing
 **Goal**: Agent has persistent memory with hybrid search and intelligent model selection -- every subsequent skill can store, recall, and route requests cost-effectively
