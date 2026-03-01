@@ -65,12 +65,12 @@ Plans:
   3. Agent proposes calendar events extracted from emails -- operator confirms via Telegram and the event appears in Google Calendar
   4. Agent defers non-urgent notifications when Google Calendar shows the operator is in a meeting
   5. All agent-captured actions and items are logged to Notion and visible in a single centralized view
-**Plans**: TBD
+**Plans**: 3 plans in 3 waves
 
 Plans:
-- [ ] 03-01: Telegram bot with HITL inline buttons
-- [ ] 03-02: Gmail OAuth and email triage skill
-- [ ] 03-03: Google Calendar and Notion integration
+- [ ] 03-01-PLAN.md -- Telegram bot with grammY (commands, user whitelist, MarkdownV2 formatters) and HITL approval queue (SQLite-backed, YELLOW-tier async approval via inline buttons) [Wave 1]
+- [ ] 03-02-PLAN.md -- Gmail OAuth2 client, email triage engine with LLM classification (Haiku tier), calendar event extraction, periodic polling with historyId, /triage command [Wave 2]
+- [ ] 03-03-PLAN.md -- Google Calendar event insertion with Telegram confirmation, calendar-aware message deferral (freebusy.query), Notion action log database integration [Wave 3]
 
 ### Phase 4: Task Management and Context Capture
 **Goal**: Operator has a single, automatically populated todo list enriched by meetings, calls, iMessage, and adaptive check-ins -- nothing falls through the cracks
