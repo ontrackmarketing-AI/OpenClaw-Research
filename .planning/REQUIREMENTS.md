@@ -65,7 +65,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Model Routing
 
 - [x] **MODL-01**: 4-tier model routing -- Ollama qwen3:14b (free, ~30% traffic) for classification/formatting -> Claude Haiku 4.5 (~50%) for standard tasks -> Claude Sonnet 4.5 (~15%) for reasoning -> Claude Opus 4.6 (~5%) for client-facing quality
-- [x] **MODL-02**: Kimi and Gemini available as additional model options for specific task types
+- [ ] **MODL-02**: Kimi and Gemini available as additional model options for specific task types (Deferred -- core 4-tier stack implemented first; add when needed)
 - [x] **MODL-03**: Automatic fallback chain -- if a tier fails, escalate to next tier with error handling
 - [x] **MODL-04**: Prompt caching enabled for system prompts -- 60-90% input token cost reduction
 
@@ -167,7 +167,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PROP-05 | Phase 5 | Pending |
 | PROP-06 | Phase 5 | Pending |
 | MODL-01 | Phase 2 | Complete |
-| MODL-02 | Phase 2 | Complete |
+| MODL-02 | Phase 2 | Deferred |
 | MODL-03 | Phase 2 | Complete |
 | MODL-04 | Phase 2 | Complete |
 | PRAG-01 | Phase 6 | Pending |
