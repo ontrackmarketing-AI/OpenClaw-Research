@@ -17,13 +17,13 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Security
 
-- [ ] **SECR-01**: n8n security proxy operational -- agent never holds external API keys; 6 proxy workflows (Clay, GHL contacts, GHL messages, email, DataForSEO, Serper)
-- [ ] **SECR-02**: HITL approval via Telegram with RED/GREEN/YELLOW tiers -- RED: send messages, delete data, financial >$5, publish content; GREEN: reads, drafts, memory writes, logs; YELLOW: context-dependent with approval thresholds
+- [x] **SECR-01**: n8n security proxy operational -- agent never holds external API keys; 6 proxy workflows (Clay, GHL contacts, GHL messages, email, DataForSEO, Serper)
+- [x] **SECR-02**: HITL approval via Telegram with RED/GREEN/YELLOW tiers -- RED: send messages, delete data, financial >$5, publish content; GREEN: reads, drafts, memory writes, logs; YELLOW: context-dependent with approval thresholds
 - [x] **SECR-03**: Cost circuit breakers active -- $50/month Anthropic hard cap, 50 tool calls/session, 30-minute session timeout, $100/month Clay credit cap, 100 emails/day limit
 - [x] **SECR-04**: Context window safety -- pinned directives with [PINNED -- DO NOT SUMMARIZE] markers, checkpoint summarization every 20 turns, verification check every 10 turns
-- [ ] **SECR-05**: Content sanitization in n8n proxy -- strip prompt injection attempts from email/OCR inputs before they reach the agent
+- [x] **SECR-05**: Content sanitization in n8n proxy -- strip prompt injection attempts from email/OCR inputs before they reach the agent
 - [x] **SECR-06**: Emergency stop procedure tested -- `docker compose stop openclaw` with key revocation within 5 minutes
-- [ ] **SECR-07**: DELETE operations always require HITL approval -- this rule never relaxes
+- [x] **SECR-07**: DELETE operations always require HITL approval -- this rule never relaxes
 
 ### Memory
 
@@ -134,13 +134,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFR-03 | Phase 1 | Complete |
 | INFR-04 | Phase 1 | Complete |
 | INFR-05 | Phase 1 | Complete |
-| SECR-01 | Phase 1 | Pending |
-| SECR-02 | Phase 1 | Pending |
+| SECR-01 | Phase 1 | Complete |
+| SECR-02 | Phase 1 | Complete |
 | SECR-03 | Phase 1 | Complete |
 | SECR-04 | Phase 1 | Complete |
-| SECR-05 | Phase 1 | Pending |
+| SECR-05 | Phase 1 | Complete |
 | SECR-06 | Phase 1 | Complete |
-| SECR-07 | Phase 1 | Pending |
+| SECR-07 | Phase 1 | Complete |
 | MEMR-01 | Phase 2 | Pending |
 | MEMR-02 | Phase 2 | Pending |
 | MEMR-03 | Phase 2 | Pending |

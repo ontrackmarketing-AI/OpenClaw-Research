@@ -12,7 +12,7 @@ OpenClaw delivers an always-on AI agent that progressively takes over the operat
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Secure Infrastructure** - Docker stack, security hardening, n8n proxy, HITL policy, cost circuit breakers, and Tailscale VPN
+- [x] **Phase 1: Secure Infrastructure** - Docker stack, security hardening, n8n proxy, HITL policy, cost circuit breakers, and Tailscale VPN
 - [ ] **Phase 2: Memory and Model Routing** - Three-tier memory system, hybrid search, daily log compaction, and 4-tier model routing with fallback chain
 - [ ] **Phase 3: Telegram Command Channel** - Telegram bot as primary interface, email triage with approve/reject, calendar event extraction, Notion task logging
 - [ ] **Phase 4: Task Management and Context Capture** - Centralized todo list, meeting/call transcript processing, iMessage context, proactive check-ins with adaptive timing
@@ -36,7 +36,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 Plans:
 - [x] 01-01-PLAN.md -- Docker stack (PostgreSQL, Redis, Qdrant, n8n), Ollama models, Tailscale serve [Wave 1]
-- [ ] 01-02-PLAN.md -- n8n proxy workflows (6 proxies + sanitizer), HITL tier enforcement [Wave 2]
+- [x] 01-02-PLAN.md -- n8n proxy workflows (6 proxies + sanitizer), HITL tier enforcement [Wave 2]
 - [x] 01-03-PLAN.md -- Cost circuit breakers, context window safety, emergency stop [Wave 2]
 
 ### Phase 2: Memory and Model Routing
@@ -144,7 +144,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Secure Infrastructure | 1/3 | In Progress | - |
+| 1. Secure Infrastructure | 3/3 | Complete | 2026-02-28 |
 | 2. Memory and Model Routing | 0/2 | Not started | - |
 | 3. Telegram Command Channel | 0/3 | Not started | - |
 | 4. Task Management and Context Capture | 0/3 | Not started | - |
