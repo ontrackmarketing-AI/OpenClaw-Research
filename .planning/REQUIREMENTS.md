@@ -27,11 +27,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Memory
 
-- [ ] **MEMR-01**: MEMORY.md persistent agent memory with 4,000 token budget and auto-compaction
-- [ ] **MEMR-02**: SQLite FTS5 full-text search index (porter unicode61 tokenizer) for keyword matching
-- [ ] **MEMR-03**: Qdrant vector collection (768-dim, nomic-embed-text embeddings, cosine similarity 0.7 threshold) for semantic search
-- [ ] **MEMR-04**: Hybrid search merging vector + FTS5 via Reciprocal Rank Fusion (0.6 vector / 0.4 FTS5 weights)
-- [ ] **MEMR-05**: Daily log directory with compaction (daily -> weekly summaries after 30 days)
+- [x] **MEMR-01**: MEMORY.md persistent agent memory with 4,000 token budget and auto-compaction
+- [x] **MEMR-02**: SQLite FTS5 full-text search index (porter unicode61 tokenizer) for keyword matching
+- [x] **MEMR-03**: Qdrant vector collection (768-dim, nomic-embed-text embeddings, cosine similarity 0.7 threshold) for semantic search
+- [x] **MEMR-04**: Hybrid search merging vector + FTS5 via Reciprocal Rank Fusion (0.6 vector / 0.4 FTS5 weights)
+- [x] **MEMR-05**: Daily log directory with compaction (daily -> weekly summaries after 30 days)
 
 ### Communication
 
@@ -141,11 +141,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SECR-05 | Phase 1 | Complete |
 | SECR-06 | Phase 1 | Complete |
 | SECR-07 | Phase 1 | Complete |
-| MEMR-01 | Phase 2 | Pending |
-| MEMR-02 | Phase 2 | Pending |
-| MEMR-03 | Phase 2 | Pending |
-| MEMR-04 | Phase 2 | Pending |
-| MEMR-05 | Phase 2 | Pending |
+| MEMR-01 | Phase 2 | Complete |
+| MEMR-02 | Phase 2 | Complete |
+| MEMR-03 | Phase 2 | Complete |
+| MEMR-04 | Phase 2 | Complete |
+| MEMR-05 | Phase 2 | Complete |
 | COMM-01 | Phase 3 | Pending |
 | COMM-02 | Phase 3 | Pending |
 | COMM-03 | Phase 3 | Pending |
