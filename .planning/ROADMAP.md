@@ -13,7 +13,7 @@ OpenClaw delivers an always-on AI agent that progressively takes over the operat
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Secure Infrastructure** - Docker stack, security hardening, n8n proxy, HITL policy, cost circuit breakers, and Tailscale VPN
-- [ ] **Phase 2: Memory and Model Routing** - Three-tier memory system, hybrid search, daily log compaction, and 4-tier model routing with fallback chain
+- [x] **Phase 2: Memory and Model Routing** - Three-tier memory system, hybrid search, daily log compaction, and 4-tier model routing with fallback chain
 - [ ] **Phase 3: Telegram Command Channel** - Telegram bot as primary interface, email triage with approve/reject, calendar event extraction, Notion task logging
 - [ ] **Phase 4: Task Management and Context Capture** - Centralized todo list, meeting/call transcript processing, iMessage context, proactive check-ins with adaptive timing
 - [ ] **Phase 5: Proposal Pipeline** - Meeting-to-proposal automation with fact extraction, discovery forms, Gamma presentation generation, and CRM-triggered decks
@@ -52,8 +52,8 @@ Plans:
 **Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 02-01-PLAN.md -- Memory system: MEMORY.md persistent storage, daily logs, FTS5 keyword search, Qdrant vector search, hybrid RRF merge, log compaction [Wave 1]
-- [ ] 02-02-PLAN.md -- Model routing: 4-tier classifier (Ollama/Haiku/Sonnet/Opus), fallback chain, prompt caching, cost tracker integration [Wave 2]
+- [x] 02-01-PLAN.md -- Memory system: MEMORY.md persistent storage, daily logs, FTS5 keyword search, Qdrant vector search, hybrid RRF merge, log compaction [Wave 1]
+- [x] 02-02-PLAN.md -- Model routing: 4-tier classifier (Ollama/Haiku/Sonnet/Opus), fallback chain, prompt caching, cost tracker integration [Wave 2]
 
 ### Phase 3: Telegram Command Channel
 **Goal**: Operator can interact with the agent through Telegram for approvals, email triage, calendar awareness, and centralized task logging -- this is the agent's voice

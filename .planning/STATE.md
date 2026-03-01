@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-01T03:34:00.000Z"
+last_updated: "2026-03-01T03:47:00.000Z"
 progress:
   total_phases: 7
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 6
-  completed_plans: 5
+  completed_plans: 6
 ---
 
 # Project State
@@ -18,36 +18,37 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** The agent removes redundant tasks from the operator's day by watching, learning, and autonomously executing -- getting better at each task every time it does it.
-**Current focus:** Phase 2: Memory and Model Routing
+**Current focus:** Phase 2 complete -- ready for Phase 3
 
 ## Current Position
 
-Phase: 2 of 7 (Memory and Model Routing)
-Plan: 1 of 2 in current phase (02-01 complete, 02-02 pending)
-Status: Executing Phase 2 -- Plan 02-01 complete
-Last activity: 2026-03-01 -- Completed 02-01-PLAN.md (Memory system: persistent, FTS5, Qdrant, hybrid RRF, compaction)
+Phase: 2 of 7 (Memory and Model Routing) -- COMPLETE
+Plan: 2 of 2 in current phase (02-01 complete, 02-02 complete)
+Status: Phase 2 complete -- all plans executed
+Last activity: 2026-03-01 -- Completed 02-02-PLAN.md (Model Router: 4-tier routing, fallback chain, prompt caching, cost integration)
 
-Progress: [████░░░░░░] 24%
+Progress: [██████░░░░] 29%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min)
-- Total execution time: ~3 sessions + 12min
+- Total plans completed: 6
+- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min)
+- Total execution time: ~3 sessions + 20min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-secure-infrastructure | 4/4 | cross-session + 80min | - |
-| 02-memory-and-model-routing | 1/2 | 9min | 9min |
+| 02-memory-and-model-routing | 2/2 | 17min | 8.5min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (cross-session), 01-03 (7min), 01-02 (70min), 01-04 (3min), 02-01 (9min)
-- Trend: Phase 2 in progress
+- Last 5 plans: 01-03 (7min), 01-02 (70min), 01-04 (3min), 02-01 (9min), 02-02 (8min)
+- Trend: Phase 2 complete
 
 *Updated after each plan completion*
+| Phase 02 P02 | 8min | 2 tasks | 9 files |
 | Phase 02 P01 | 9min | 3 tasks | 12 files |
 | Phase 01 P04 | 3min | 1 task | 2 files |
 | Phase 01 P03 | 7min | 2 tasks | 13 files |
@@ -84,6 +85,10 @@ Recent decisions affecting current work:
 - [02-01]: Content-hash deduplication for FTS5 indexing -- skip re-index if content unchanged
 - [02-01]: Deterministic IDs for Qdrant points from path+chunkIndex hash -- enables consistent upsert/delete
 - [02-01]: Initialized git repo at ~/.openclaw for source code version control
+- [02-02]: Opus > sonnet > ollama classification priority -- client-facing tasks always route to highest quality tier first
+- [02-02]: checkLimits() called before every model call -- circuit breaker enforced at router entry point
+- [02-02]: Prompt caching uses static-first ordering (base prompt + MEMORY.md before dynamic context) for cache stability
+- [02-02]: Daily cost summary format matches user spec: "Today: $X.XX total -- Haiku $X.XX (NNK tok), ..."
 
 ### Pending Todos
 
@@ -99,6 +104,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 02-01-PLAN.md -- Memory system (persistent, FTS5, Qdrant, hybrid RRF, compaction)
+Stopped at: Completed 02-02-PLAN.md -- Model Router (4-tier routing, fallback chain, prompt caching, cost integration)
 Resume file: None
-Next: Execute 02-02-PLAN.md (Model Router)
+Next: Phase 2 complete. Plan Phase 3 or execute Phase 3 plans.
