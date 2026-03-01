@@ -36,9 +36,9 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Communication
 
 - [ ] **COMM-01**: User can receive email triage summary via Telegram -- Gmail inbox scanned, actionable items surfaced with sender, subject, and suggested action
-- [ ] **COMM-02**: User can approve/reject agent-proposed email actions via inline Telegram buttons
+- [ ] **COMM-02**: User can approve/reject agent-proposed email actions via inline Telegram buttons (Partial -- approval infrastructure complete in 03-01, email actions require 03-02)
 - [ ] **COMM-03**: Agent extracts calendar events from emails and proposes adding them to Google Calendar
-- [ ] **COMM-04**: Telegram bot serves as primary command interface -- HITL approvals, agent queries, status updates, quiet hours
+- [x] **COMM-04**: Telegram bot serves as primary command interface -- HITL approvals, agent queries, status updates, quiet hours
 - [ ] **COMM-05**: Agent reads iMessage conversations via BlueBubbles relay (read-only, business contacts only)
 - [ ] **COMM-06**: iMessage context enriches todo items and check-in suggestions -- "John from Acme texted about the invoice" becomes actionable
 - [ ] **COMM-07**: Agent respects Google Calendar -- no check-ins during meetings, defers non-urgent actions to free slots
@@ -147,9 +147,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MEMR-04 | Phase 2 | Complete |
 | MEMR-05 | Phase 2 | Complete |
 | COMM-01 | Phase 3 | Pending |
-| COMM-02 | Phase 3 | Pending |
+| COMM-02 | Phase 3 | Partial -- approval infrastructure in 03-01, email actions in 03-02 |
 | COMM-03 | Phase 3 | Pending |
-| COMM-04 | Phase 3 | Pending |
+| COMM-04 | Phase 3 | Complete |
 | COMM-05 | Phase 4 | Pending |
 | COMM-06 | Phase 4 | Pending |
 | COMM-07 | Phase 3 | Pending |

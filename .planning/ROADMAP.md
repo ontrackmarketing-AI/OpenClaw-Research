@@ -68,7 +68,7 @@ Plans:
 **Plans**: 3 plans in 3 waves
 
 Plans:
-- [ ] 03-01-PLAN.md -- Telegram bot with grammY (commands, user whitelist, MarkdownV2 formatters) and HITL approval queue (SQLite-backed, YELLOW-tier async approval via inline buttons) [Wave 1]
+- [x] 03-01-PLAN.md -- Telegram bot with grammY (commands, user whitelist, MarkdownV2 formatters) and HITL approval queue (SQLite-backed, YELLOW-tier async approval via inline buttons) [Wave 1]
 - [ ] 03-02-PLAN.md -- Gmail OAuth2 client, email triage engine with LLM classification (Haiku tier), calendar event extraction, periodic polling with historyId, /triage command [Wave 2]
 - [ ] 03-03-PLAN.md -- Google Calendar event insertion with Telegram confirmation, calendar-aware message deferral (freebusy.query), Notion action log database integration [Wave 3]
 
@@ -146,7 +146,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 |-------|----------------|--------|-----------|
 | 1. Secure Infrastructure | 3/3 | Complete | 2026-02-28 |
 | 2. Memory and Model Routing | 0/2 | Not started | - |
-| 3. Telegram Command Channel | 0/3 | Not started | - |
+| 3. Telegram Command Channel | 1/3 | In progress | - |
 | 4. Task Management and Context Capture | 0/3 | Not started | - |
 | 5. Proposal Pipeline | 0/2 | Not started | - |
 | 6. Per-Task RAG | 0/2 | Not started | - |
