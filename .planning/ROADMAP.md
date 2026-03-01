@@ -49,11 +49,11 @@ Plans:
   3. Daily logs older than 30 days are automatically compacted into weekly summaries without manual intervention
   4. A classification task routes to Ollama qwen3:14b (free), a standard task routes to Haiku, and a reasoning task routes to Sonnet -- fallback chain engages when a tier is unavailable
   5. Prompt caching is active on system prompts -- API billing confirms reduced input token costs on repeated calls
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 02-01: Memory system (MEMORY.md, SQLite FTS5, Qdrant)
-- [ ] 02-02: Model routing and prompt caching
+- [ ] 02-01-PLAN.md -- Memory system: MEMORY.md persistent storage, daily logs, FTS5 keyword search, Qdrant vector search, hybrid RRF merge, log compaction [Wave 1]
+- [ ] 02-02-PLAN.md -- Model routing: 4-tier classifier (Ollama/Haiku/Sonnet/Opus), fallback chain, prompt caching, cost tracker integration [Wave 2]
 
 ### Phase 3: Telegram Command Channel
 **Goal**: Operator can interact with the agent through Telegram for approvals, email triage, calendar awareness, and centralized task logging -- this is the agent's voice
