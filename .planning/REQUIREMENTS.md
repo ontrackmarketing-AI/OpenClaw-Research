@@ -18,7 +18,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Security
 
 - [x] **SECR-01**: n8n security proxy operational -- agent never holds external API keys; 6 proxy workflows (Clay, GHL contacts, GHL messages, email, DataForSEO, Serper)
-- [x] **SECR-02**: HITL approval via Telegram with RED/GREEN/YELLOW tiers -- RED: send messages, delete data, financial >$5, publish content; GREEN: reads, drafts, memory writes, logs; YELLOW: context-dependent with approval thresholds
+- [x] **SECR-02** (Partial): HITL approval via Telegram with RED/GREEN/YELLOW tiers -- RED: send messages, delete data, financial >$5, publish content; GREEN: reads, drafts, memory writes, logs; YELLOW: context-dependent with approval thresholds. **Phase 1: tier classification and blocking. Phase 3: Telegram approval channel.**
 - [x] **SECR-03**: Cost circuit breakers active -- $50/month Anthropic hard cap, 50 tool calls/session, 30-minute session timeout, $100/month Clay credit cap, 100 emails/day limit
 - [x] **SECR-04**: Context window safety -- pinned directives with [PINNED -- DO NOT SUMMARIZE] markers, checkpoint summarization every 20 turns, verification check every 10 turns
 - [x] **SECR-05**: Content sanitization in n8n proxy -- strip prompt injection attempts from email/OCR inputs before they reach the agent
@@ -135,7 +135,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFR-04 | Phase 1 | Complete |
 | INFR-05 | Phase 1 | Complete |
 | SECR-01 | Phase 1 | Complete |
-| SECR-02 | Phase 1 | Complete |
+| SECR-02 | Phase 1, Phase 3 | Partial -- Phase 1 delivers tier classification and enforcement (classify.ts, enforce.ts, 28 tests). Phase 3 delivers Telegram approval channel for YELLOW escalation. |
 | SECR-03 | Phase 1 | Complete |
 | SECR-04 | Phase 1 | Complete |
 | SECR-05 | Phase 1 | Complete |
