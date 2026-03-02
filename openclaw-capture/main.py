@@ -3,8 +3,8 @@ OpenClaw Screen Capture Daemon -- Entry Point
 
 Starts the screen capture daemon on Windows with:
 1. Capture loop thread (mss + pytesseract + privacy filter)
-2. Sync loop thread (SQLite -> Supabase REST API)
-3. Command poller thread (polls Supabase screen_commands for Telegram relay)
+2. Sync loop thread (SQLite -> Mac Mini HTTP receiver)
+3. Command poller thread (polls Mac HTTP endpoint for Telegram relay commands)
 4. System tray on main thread (pause/resume/delete/status/quit)
 
 Usage:
@@ -24,7 +24,7 @@ from typing import Any
 from capture.daemon import init_local_db, run_capture_loop
 from capture.privacy import load_config
 from sync.offline_queue import cleanup_old_captures
-from sync.supabase_sync import run_sync_loop
+from sync.mac_sync import run_sync_loop
 from tray.tray_app import run_tray
 
 # -- Logging setup --
@@ -59,35 +59,29 @@ def poll_commands(
     db_path: str,
 ) -> None:
     """
-    Poll Supabase screen_commands table for Telegram relay commands.
+    Poll Mac HTTP endpoint for Telegram relay commands.
 
-    Fetches pending commands every command_poll_seconds, executes them,
-    and marks them as executed.
+    Fetches pending commands every command_poll_seconds via GET /commands,
+    executes them, and marks them as executed via POST /commands/:id/executed.
 
     Supported commands:
     - pause: sets pause_event
     - resume: clears pause_event
     - delete_last_30m: deletes captures from last 30 minutes
     - delete_today: deletes all captures from today
-    - status: no-op (status is queried directly from Supabase by Telegram handler)
+    - status: no-op (status is queried directly by Telegram handler)
     """
     import httpx
 
-    supabase_url = config.get("supabase_url", "")
-    service_key = config.get("supabase_service_role_key", "")
+    mac_endpoint = config.get("mac_endpoint_url", "")
+    timeout_seconds = config.get("mac_endpoint_timeout_seconds", 10)
     interval = config.get("command_poll_seconds", 10)
 
-    if not supabase_url or not service_key:
-        logger.info("Supabase not configured, command poller disabled")
+    if not mac_endpoint:
+        logger.info("Mac endpoint not configured, command poller disabled")
         return
 
-    base_url = supabase_url.rstrip("/")
-    headers = {
-        "apikey": service_key,
-        "Authorization": f"Bearer {service_key}",
-        "Content-Type": "application/json",
-        "Prefer": "return=minimal",
-    }
+    base_url = mac_endpoint.rstrip("/")
 
     logger.info(
         json.dumps(
@@ -103,20 +97,9 @@ def poll_commands(
 
     while not shutdown_event.is_set():
         try:
-            with httpx.Client(timeout=10.0) as client:
-                # Fetch pending commands
-                resp = client.get(
-                    f"{base_url}/rest/v1/screen_commands",
-                    params={
-                        "status": "eq.pending",
-                        "order": "created_at.asc",
-                        "limit": "10",
-                    },
-                    headers={
-                        "apikey": service_key,
-                        "Authorization": f"Bearer {service_key}",
-                    },
-                )
+            with httpx.Client(timeout=float(timeout_seconds)) as client:
+                # Fetch pending commands from Mac endpoint
+                resp = client.get(f"{base_url}/commands")
 
                 if resp.status_code != 200:
                     time.sleep(interval)
@@ -171,17 +154,8 @@ def poll_commands(
                     else:
                         logger.warning("Unknown command: %s", command)
 
-                    # Mark command as executed
-                    now_iso = datetime.now(timezone.utc).isoformat()
-                    client.patch(
-                        f"{base_url}/rest/v1/screen_commands",
-                        params={"id": f"eq.{cmd_id}"},
-                        json={
-                            "status": "executed",
-                            "executed_at": now_iso,
-                        },
-                        headers=headers,
-                    )
+                    # Mark command as executed on Mac endpoint
+                    client.post(f"{base_url}/commands/{cmd_id}/executed")
 
         except Exception as e:
             logger.error(
@@ -246,7 +220,7 @@ def main() -> None:
     )
     capture_thread.start()
 
-    # 5. Start sync loop thread
+    # 5. Start sync loop thread (syncs to Mac HTTP receiver)
     sync_thread = threading.Thread(
         target=run_sync_loop,
         args=(config, DB_PATH, shutdown_event),
@@ -255,7 +229,7 @@ def main() -> None:
     )
     sync_thread.start()
 
-    # 6. Start command poller thread
+    # 6. Start command poller thread (polls Mac HTTP endpoint)
     command_thread = threading.Thread(
         target=poll_commands,
         args=(config, pause_event, shutdown_event, DB_PATH),

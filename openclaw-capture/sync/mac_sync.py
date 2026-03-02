@@ -1,8 +1,8 @@
 """
-Supabase sync service.
+Mac HTTP endpoint sync service.
 
-Batch-syncs unsynced captures from local SQLite to Supabase REST API.
-Designed for offline resilience: if Supabase is unreachable, captures
+Batch-syncs unsynced captures from local SQLite to the Mac Mini HTTP receiver.
+Designed for offline resilience: if the Mac endpoint is unreachable, captures
 remain in local SQLite and sync catches up when connectivity resumes.
 """
 
@@ -21,20 +21,20 @@ logger = logging.getLogger("openclaw-capture.sync")
 
 def sync_unsynced_captures(config: dict[str, Any], db_path: str) -> int:
     """
-    Fetch up to 50 unsynced captures and POST them to Supabase REST API.
+    Fetch up to 50 unsynced captures and POST them to the Mac HTTP receiver.
 
     Args:
-        config: Configuration dict with supabase_url and supabase_service_role_key.
+        config: Configuration dict with mac_endpoint_url.
         db_path: Path to local SQLite database.
 
     Returns:
         Number of captures successfully synced.
     """
-    supabase_url = config.get("supabase_url", "")
-    service_key = config.get("supabase_service_role_key", "")
+    mac_endpoint = config.get("mac_endpoint_url", "")
+    timeout_seconds = config.get("mac_endpoint_timeout_seconds", 10)
 
-    if not supabase_url or not service_key:
-        logger.debug("Supabase not configured, skipping sync")
+    if not mac_endpoint:
+        logger.debug("Mac endpoint not configured, skipping sync")
         return 0
 
     conn = sqlite3.connect(db_path, check_same_thread=False)
@@ -58,7 +58,7 @@ def sync_unsynced_captures(config: dict[str, Any], db_path: str) -> int:
         if not rows:
             return 0
 
-        # Build batch payload for Supabase REST API
+        # Build batch payload for Mac HTTP receiver
         payload = []
         local_ids = []
         for row in rows:
@@ -75,16 +75,13 @@ def sync_unsynced_captures(config: dict[str, Any], db_path: str) -> int:
             )
             local_ids.append(row["id"])
 
-        # POST to Supabase REST API
-        url = f"{supabase_url.rstrip('/')}/rest/v1/screen_captures"
+        # POST to Mac HTTP receiver
+        url = f"{mac_endpoint.rstrip('/')}/captures"
         headers = {
-            "apikey": service_key,
-            "Authorization": f"Bearer {service_key}",
             "Content-Type": "application/json",
-            "Prefer": "return=minimal",
         }
 
-        with httpx.Client(timeout=30.0) as client:
+        with httpx.Client(timeout=float(timeout_seconds)) as client:
             response = client.post(url, json=payload, headers=headers)
 
         if response.status_code == 201:

@@ -8,9 +8,9 @@ command_poll_seconds: 10
 max_image_width: 1920
 local_image_retention_days: 30
 
-# Supabase connection (filled by user)
-supabase_url: ""
-supabase_service_role_key: ""
+# Mac Mini HTTP receiver (fill in your Mac's local IP)
+mac_endpoint_url: "http://192.168.1.100:7890"
+mac_endpoint_timeout_seconds: 10
 
 # Privacy: excluded applications (case-insensitive match on app name)
 excluded_apps:
