@@ -16,8 +16,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Memory and Model Routing** - Three-tier memory system, hybrid search, daily log compaction, and 4-tier model routing with fallback chain
 - [x] **Phase 3: Telegram Command Channel** - Telegram bot as primary interface, email triage with approve/reject, calendar event extraction, Notion task logging
 - [x] **Phase 4: Task Management and Context Capture** - Centralized todo list, meeting/call transcript processing, iMessage context, proactive check-ins with adaptive timing
-- [ ] **Phase 5: Proposal Pipeline** - Meeting-to-proposal automation with fact extraction, discovery forms, Gamma presentation generation, and CRM-triggered decks
-- [ ] **Phase 6: Per-Task RAG** - Self-improvement flywheel with per-task vector collections, outcome indexing, pre-task recall, write gates, and client knowledge retrieval
+- [x] **Phase 5: Proposal Pipeline** - Meeting-to-proposal automation with fact extraction, discovery forms, Gamma presentation generation, and CRM-triggered decks
+- [x] **Phase 6: Per-Task RAG** - Self-improvement flywheel with per-task vector collections, outcome indexing, pre-task recall, write gates, and client knowledge retrieval
 - [ ] **Phase 7: OCR Screen Watching** - Windows screen capture daemon, semantic search over screen history, sensitive content filtering, and context-enriched agent awareness
 
 ## Phase Details
