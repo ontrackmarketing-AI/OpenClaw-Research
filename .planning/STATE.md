@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T21:24:34.056Z"
+last_updated: "2026-03-02T22:06:00.000Z"
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 5
-  total_plans: 14
-  completed_plans: 14
+  total_plans: 16
+  completed_plans: 15
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** The agent removes redundant tasks from the operator's day by watching, learning, and autonomously executing -- getting better at each task every time it does it.
-**Current focus:** Phase 5 complete -- Full proposal pipeline with CRM-triggered pitch decks. Meeting-to-proposal and CRM-to-pitch-deck flows both delivered.
+**Current focus:** Phase 6 in progress -- Per-task RAG core complete (collections, outcome indexing, write gates). Recall pipeline next.
 
 ## Current Position
 
-Phase: 5 of 7 (Proposal Pipeline) -- COMPLETE
-Plan: 2 of 2 in current phase -- COMPLETE
-Status: Phase 05 complete -- proposal pipeline core + CRM-triggered pitch decks
-Last activity: 2026-03-02 -- Completed 05-02-PLAN.md (CRM-triggered proposals)
+Phase: 6 of 7 (Per-Task RAG) -- IN PROGRESS
+Plan: 1 of 2 in current phase -- COMPLETE
+Status: Phase 06 Plan 01 complete -- per-task collections, outcome indexing, write gates
+Last activity: 2026-03-02 -- Completed 06-01-PLAN.md (per-task RAG core)
 
-Progress: [████████████████████] 100% (Phases 1-5 complete, 14/14 plans)
+Progress: [███████████████████░] 94% (Phases 1-5 complete, 15/16 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
-- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session + 11min + 6min)
-- Total execution time: ~5 sessions + 47min
+- Total plans completed: 15
+- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session + 11min + 6min + 6min)
+- Total execution time: ~5 sessions + 53min
 
 **By Phase:**
 
@@ -45,12 +45,14 @@ Progress: [████████████████████] 100% (P
 | 03-telegram-command-channel | 3/3 | cross-session | - |
 | 04-task-management-and-context-capture | 3/3 | cross-session | - |
 | 05-proposal-pipeline | 2/2 | 17min | 8.5min |
+| 06-per-task-rag | 1/2 | 6min | 6min |
 
 **Recent Trend:**
-- Last 5 plans: 04-02 (cross-session), 04-03 (cross-session), 05-01 (11min), 05-02 (6min)
-- Trend: Phase 5 complete -- both plans delivered in 17 min total. CRM triggers (6 min) faster than core pipeline (11 min) due to reuse.
+- Last 5 plans: 04-03 (cross-session), 05-01 (11min), 05-02 (6min), 06-01 (6min)
+- Trend: Phase 6 Plan 01 delivered in 6 min. Per-task RAG core with 93 test assertions across 3 suites.
 
 *Updated after each plan completion*
+| Phase 06 P01 | 6min | 3 tasks | 9 files |
 | Phase 05 P02 | 6min | 1 task | 5 files |
 | Phase 05 P01 | 11min | 3 tasks | 14 files |
 | Phase 04 P03 | cross-session | 3 tasks | 9 files |
@@ -130,6 +132,11 @@ Recent decisions affecting current work:
 - [05-02]: Industry context search falls back to hardcoded pain points per-vertical -- safety net until memory has content
 - [05-02]: Contact enrichment via n8n proxy with 5s timeout and graceful degradation to event data
 - [05-02]: node:http createServer used directly (no Express) -- single-route webhook endpoint needs no framework
+- [06-01]: Custom test runner (npx tsx) instead of vitest -- matches existing project test pattern from Phase 2
+- [06-01]: Dynamic import for write-gates in callbacks.ts -- graceful degradation if task-rag module not yet loaded
+- [06-01]: shouldIndex() rejects routine successes with no correction/pattern -- prevents outcome index pollution
+- [06-01]: Quality gate on auto-promotion: only success=true or has operator_correction qualifies
+- [06-01]: Task type included in deterministicOutcomeId hash input -- prevents cross-collection ID collisions
 
 ### Pending Todos
 
@@ -145,6 +152,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 05-02-PLAN.md (CRM-triggered proposals) -- Phase 5 complete
+Stopped at: Completed 06-01-PLAN.md (per-task RAG core)
 Resume file: None
-Next: Plan Phase 6 (Per-Task RAG) -- /gsd:plan-phase 6
+Next: Execute 06-02-PLAN.md (recall pipeline and feedback loop)

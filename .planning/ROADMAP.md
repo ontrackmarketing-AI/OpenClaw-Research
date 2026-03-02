@@ -115,11 +115,11 @@ Plans:
   3. Before executing a repeated task, agent retrieves and applies relevant past outcomes -- observable as different behavior on second execution vs. first
   4. New RAG entries start as "pending" and graduate to "confirmed" only after operator validation or a 7-day no-complaint window
   5. Client knowledge (past interactions, preferences, project history) is retrievable across all workflows -- asking "what do we know about [client]?" returns comprehensive context
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 06-01: Per-task collection setup and outcome indexing
-- [ ] 06-02: Pre-task recall, write gates, and client knowledge RAG
+- [ ] 06-01-PLAN.md -- Per-task Qdrant collection manager (5 task-type collections with payload indexes), outcome indexer with dedup and shouldIndex filter, write gate lifecycle (pending->confirmed promotion cron at 2 AM, operator Telegram validation, quality gate for auto-promotion) [Wave 1]
+- [ ] 06-02-PLAN.md -- Pre-task recall (query past outcomes, weight confirmed 2x, format lessons, inject after cache breakpoint), client knowledge collection (cross-workflow indexing with contact_id dedup, semantic and direct queries) [Wave 2]
 
 ### Phase 7: OCR Screen Watching
 **Goal**: Agent can see what the operator is working on via Windows screen capture and uses that context to provide proactive, relevant assistance
