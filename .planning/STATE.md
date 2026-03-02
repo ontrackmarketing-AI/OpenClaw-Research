@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T22:06:00.000Z"
+last_updated: "2026-03-02T22:16:00.000Z"
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 16
-  completed_plans: 15
+  completed_plans: 16
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** The agent removes redundant tasks from the operator's day by watching, learning, and autonomously executing -- getting better at each task every time it does it.
-**Current focus:** Phase 6 in progress -- Per-task RAG core complete (collections, outcome indexing, write gates). Recall pipeline next.
+**Current focus:** Phase 6 complete -- Per-task RAG fully delivered (collections, outcome indexing, write gates, pre-task recall, client knowledge).
 
 ## Current Position
 
-Phase: 6 of 7 (Per-Task RAG) -- IN PROGRESS
-Plan: 1 of 2 in current phase -- COMPLETE
-Status: Phase 06 Plan 01 complete -- per-task collections, outcome indexing, write gates
-Last activity: 2026-03-02 -- Completed 06-01-PLAN.md (per-task RAG core)
+Phase: 6 of 7 (Per-Task RAG) -- COMPLETE
+Plan: 2 of 2 in current phase -- COMPLETE
+Status: Phase 06 complete -- pre-task recall with confirmed weighting, client knowledge RAG with dedup
+Last activity: 2026-03-02 -- Completed 06-02-PLAN.md (recall pipeline + client knowledge)
 
-Progress: [███████████████████░] 94% (Phases 1-5 complete, 15/16 plans)
+Progress: [████████████████████] 100% (Phases 1-6 complete, 16/16 plans)
 
 ## Performance Metrics
 
@@ -45,13 +45,14 @@ Progress: [███████████████████░] 94% (Ph
 | 03-telegram-command-channel | 3/3 | cross-session | - |
 | 04-task-management-and-context-capture | 3/3 | cross-session | - |
 | 05-proposal-pipeline | 2/2 | 17min | 8.5min |
-| 06-per-task-rag | 1/2 | 6min | 6min |
+| 06-per-task-rag | 2/2 | 13min | 6.5min |
 
 **Recent Trend:**
-- Last 5 plans: 04-03 (cross-session), 05-01 (11min), 05-02 (6min), 06-01 (6min)
-- Trend: Phase 6 Plan 01 delivered in 6 min. Per-task RAG core with 93 test assertions across 3 suites.
+- Last 5 plans: 05-01 (11min), 05-02 (6min), 06-01 (6min), 06-02 (7min)
+- Trend: Phase 6 complete in 13 min total. 192 test assertions across 5 suites.
 
 *Updated after each plan completion*
+| Phase 06 P02 | 7min | 2 tasks | 7 files |
 | Phase 06 P01 | 6min | 3 tasks | 9 files |
 | Phase 05 P02 | 6min | 1 task | 5 files |
 | Phase 05 P01 | 11min | 3 tasks | 14 files |
@@ -137,6 +138,11 @@ Recent decisions affecting current work:
 - [06-01]: shouldIndex() rejects routine successes with no correction/pattern -- prevents outcome index pollution
 - [06-01]: Quality gate on auto-promotion: only success=true or has operator_correction qualifies
 - [06-01]: Task type included in deterministicOutcomeId hash input -- prevents cross-collection ID collisions
+- [06-02]: Recall lessons placed after prompt cache breakpoint (dynamicContext) -- preserves cache stability for repeated calls
+- [06-02]: Client knowledge dedup threshold 0.90 (lower than outcome 0.95) -- client knowledge more varied across sources
+- [06-02]: postExecutionHook auto-indexes client knowledge -- zero-effort integration for skill callers
+- [06-02]: formatLessons priority: errors > corrections > patterns > successes with 2000-char cap
+- [06-02]: skipOllama defaults to true for pre-execution hook -- classification tasks don't benefit from recall
 
 ### Pending Todos
 
@@ -152,6 +158,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 06-01-PLAN.md (per-task RAG core)
+Stopped at: Completed 06-02-PLAN.md (recall pipeline + client knowledge)
 Resume file: None
-Next: Execute 06-02-PLAN.md (recall pipeline and feedback loop)
+Next: Phase 6 complete. All 16 plans across 6 phases delivered.

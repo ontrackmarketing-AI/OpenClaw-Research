@@ -73,9 +73,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **PRAG-01**: Separate Qdrant collection per task type (email-triage, proposal-gen, form-gen, lead-enrich, check-in, etc.)
 - [x] **PRAG-02**: Every task execution indexes its outcome -- errors, token usage, successful patterns, operator corrections
-- [ ] **PRAG-03**: Before executing a repeated task, agent queries its task-specific RAG for past mistakes and successful approaches
+- [x] **PRAG-03**: Before executing a repeated task, agent queries its task-specific RAG for past mistakes and successful approaches
 - [x] **PRAG-04**: RAG write gates -- outcomes enter as `pending` status, graduate to `confirmed` only after operator validation or 7-day no-complaint window
-- [ ] **PRAG-05**: Client knowledge indexed and retrievable across all workflows -- past interactions, preferences, project history
+- [x] **PRAG-05**: Client knowledge indexed and retrievable across all workflows -- past interactions, preferences, project history
 
 ### OCR Screen Watching
 
@@ -172,9 +172,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MODL-04 | Phase 2 | Complete |
 | PRAG-01 | Phase 6 | Complete |
 | PRAG-02 | Phase 6 | Complete |
-| PRAG-03 | Phase 6 | Pending |
+| PRAG-03 | Phase 6 | Complete |
 | PRAG-04 | Phase 6 | Complete |
-| PRAG-05 | Phase 6 | Pending |
+| PRAG-05 | Phase 6 | Complete |
 | OCRW-01 | Phase 7 | Pending |
 | OCRW-02 | Phase 7 | Pending |
 | OCRW-03 | Phase 7 | Pending |
