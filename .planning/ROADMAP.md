@@ -99,11 +99,11 @@ Plans:
   3. After discovery form responses come back, agent generates a Gamma presentation using the saved theme -- presentation is viewable via preview link
   4. Operator reviews every proposal via Telegram preview link before any delivery -- no proposal reaches a prospect without explicit HITL approval
   5. Moving a lead to "qualified" in GHL automatically triggers a tailored pitch deck draft that includes industry-specific context from client knowledge RAG
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 05-01: Transcript analysis and discovery form generation
-- [ ] 05-02: Gamma MCP integration and CRM-triggered decks
+- [ ] 05-01-PLAN.md -- Proposal types, meeting transcript analyzer (Sonnet), discovery form generator, Gamma MCP client, content assembler, SQLite proposal state machine, pipeline orchestrator, Telegram HITL approval with Approve/Edit/Reject buttons, /proposal command [Wave 1]
+- [ ] 05-02-PLAN.md -- CRM-triggered pitch decks via GHL OpportunityStageUpdate webhook (n8n relay), industry context retrieval from hybrid search with hardcoded fallback pain points, webhook deduplication, Gamma generation with HITL approval [Wave 2]
 
 ### Phase 6: Per-Task RAG
 **Goal**: Agent gets measurably better at each task over time -- every execution produces indexed learning data that improves the next execution of the same task type
