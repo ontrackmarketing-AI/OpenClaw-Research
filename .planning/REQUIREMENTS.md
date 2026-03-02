@@ -46,9 +46,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Task Management
 
-- [ ] **TASK-01**: User has a centralized todo list in Notion populated automatically from email, meetings, iMessage, and screen observations
-- [ ] **TASK-02**: Meeting transcripts from Fellow are pulled and processed -- decisions, action items, and open questions extracted
-- [ ] **TASK-03**: Call transcripts from Apple Notes are pulled and processed -- same extraction as Fellow
+- [x] **TASK-01**: User has a centralized todo list in Notion populated automatically from email, meetings, iMessage, and screen observations
+- [x] **TASK-02**: Meeting transcripts from Fellow are pulled and processed -- decisions, action items, and open questions extracted
+- [x] **TASK-03**: Call transcripts from Apple Notes are pulled and processed -- same extraction as Fellow
 - [ ] **TASK-04**: Agent sends proactive check-ins 3-5 times daily via Telegram -- morning priorities, midday status, evening wrap-up
 - [ ] **TASK-05**: Check-ins adapt over a 14-day window based on operator engagement -- learns which time slots get responses
 - [ ] **TASK-06**: Check-in templates have anti-repetition logic -- track last 10, never repeat within 3 days
@@ -154,9 +154,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMM-06 | Phase 4 | Pending |
 | COMM-07 | Phase 3 | Pending |
 | COMM-08 | Phase 3 | Pending |
-| TASK-01 | Phase 4 | Pending |
-| TASK-02 | Phase 4 | Pending |
-| TASK-03 | Phase 4 | Pending |
+| TASK-01 | Phase 4 | Complete |
+| TASK-02 | Phase 4 | Complete |
+| TASK-03 | Phase 4 | Complete |
 | TASK-04 | Phase 4 | Pending |
 | TASK-05 | Phase 4 | Pending |
 | TASK-06 | Phase 4 | Pending |

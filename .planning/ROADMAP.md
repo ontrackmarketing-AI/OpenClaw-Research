@@ -85,7 +85,7 @@ Plans:
 **Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 04-01-PLAN.md -- Notion todo database, central aggregator with dedup, transcript extraction pipeline (Fellow REST + Apple Notes AppleScript), email-to-todo wiring [Wave 1]
+- [x] 04-01-PLAN.md -- Notion todo database, central aggregator with dedup, transcript extraction pipeline (Fellow REST + Apple Notes AppleScript), email-to-todo wiring [Wave 1]
 - [ ] 04-02-PLAN.md -- BlueBubbles REST client with abstraction layer, privacy-preserving iMessage poller, context extraction for todo enrichment and check-in awareness [Wave 2]
 - [ ] 04-03-PLAN.md -- Proactive check-in engine with 5 daily slots, adaptive timing (14-day engagement tracking), anti-repetition templates, parallel context assembly, LLM personalization, Telegram delivery with response buttons [Wave 2]
 
@@ -147,7 +147,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | 1. Secure Infrastructure | 3/3 | Complete | 2026-02-28 |
 | 2. Memory and Model Routing | 2/2 | Complete | 2026-03-01 |
 | 3. Telegram Command Channel | 3/3 | Complete | 2026-03-01 |
-| 4. Task Management and Context Capture | 0/3 | Not started | - |
+| 4. Task Management and Context Capture | 1/3 | In Progress | - |
 | 5. Proposal Pipeline | 0/2 | Not started | - |
 | 6. Per-Task RAG | 0/2 | Not started | - |
 | 7. OCR Screen Watching | 0/2 | Not started | - |

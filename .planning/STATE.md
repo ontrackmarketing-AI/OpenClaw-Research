@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-01T18:50:00.000Z"
+last_updated: "2026-03-02T16:13:53.000Z"
 progress:
-  total_phases: 3
-  completed_phases: 2
-  total_plans: 9
-  completed_plans: 7
+  total_phases: 4
+  completed_phases: 3
+  total_plans: 12
+  completed_plans: 10
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** The agent removes redundant tasks from the operator's day by watching, learning, and autonomously executing -- getting better at each task every time it does it.
-**Current focus:** Phase 3 in progress -- Telegram command channel (03-01 complete, 03-02 next)
+**Current focus:** Phase 4 in progress -- Todo aggregation and transcript pipeline delivered, iMessage and check-ins next
 
 ## Current Position
 
-Phase: 3 of 7 (Telegram Command Channel) -- IN PROGRESS
-Plan: 1 of 3 in current phase (03-01 complete)
-Status: 03-01 complete -- Telegram bot and HITL approval queue delivered
-Last activity: 2026-03-01 -- Completed 03-01-PLAN.md (Telegram bot with grammY, HITL approval queue with inline buttons)
+Phase: 4 of 7 (Task Management and Context Capture) -- IN PROGRESS
+Plan: 1 of 3 in current phase (04-01 complete)
+Status: Plan 04-01 delivered -- Notion todo database, transcript extraction, email-to-todo wiring
+Last activity: 2026-03-02 -- Completed 04-01-PLAN.md (Todo aggregation and transcript pipeline)
 
-Progress: [███████░░░] 33%
+Progress: [██████████████░░░░░░] 66% (Phases 1-3 + P4 plan 1/3)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min)
-- Total execution time: ~3 sessions + 30min
+- Total plans completed: 8
+- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session)
+- Total execution time: ~4 sessions + 30min
 
 **By Phase:**
 
@@ -42,13 +42,15 @@ Progress: [███████░░░] 33%
 |-------|-------|-------|----------|
 | 01-secure-infrastructure | 4/4 | cross-session + 80min | - |
 | 02-memory-and-model-routing | 2/2 | 17min | 8.5min |
-| 03-telegram-command-channel | 1/3 | 10min | 10min |
+| 03-telegram-command-channel | 3/3 | cross-session | - |
+| 04-task-management-and-context-capture | 1/3 | cross-session | - |
 
 **Recent Trend:**
-- Last 5 plans: 01-04 (3min), 02-01 (9min), 02-02 (8min), 03-01 (10min)
-- Trend: Phase 3 in progress
+- Last 5 plans: 02-02 (8min), 03-01 (10min), 03-02 (cross-session), 03-03 (cross-session), 04-01 (cross-session)
+- Trend: Phase 4 underway, plan 1 of 3 complete
 
 *Updated after each plan completion*
+| Phase 04 P01 | cross-session | 3 tasks | 10 files |
 | Phase 03 P01 | 10min | 3 tasks | 15 files |
 | Phase 02 P02 | 8min | 2 tasks | 9 files |
 | Phase 02 P01 | 9min | 3 tasks | 12 files |
@@ -96,6 +98,12 @@ Recent decisions affecting current work:
 - [03-01]: Synchronous enforceHITL preserved for backward compatibility; enforceHITLAsync added for Telegram dispatch
 - [03-01]: executeApprovedAction is a logging stub -- real skill dispatch wires in when email/task skills are built
 - [03-01]: Updated classify.test.ts assertions for new YELLOW behavior (intentional change, not regression)
+- [04-01]: Fellow REST API (not MCP) for programmatic scheduled transcript access -- runs on timer, not interactively
+- [04-01]: AppleScript via osascript for Apple Notes access -- no third-party dependency needed
+- [04-01]: Single aggregator entry point (createTodo) for all todo sources -- enforces dedup consistently
+- [04-01]: Fire-and-forget error handling on Notion todo writes -- log errors, never throw (matches action-log pattern)
+- [04-01]: Haiku tier for LLM transcript extraction -- standard task, cost-efficient
+- [04-01]: Chunked extraction for long transcripts (>32000 chars) with merge and dedup on task text
 
 ### Pending Todos
 
@@ -110,7 +118,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-01
-Stopped at: Completed 03-01-PLAN.md -- Telegram bot with grammY, HITL approval queue with inline buttons
+Last session: 2026-03-02
+Stopped at: Completed 04-01-PLAN.md (Todo aggregation and transcript pipeline)
 Resume file: None
-Next: Execute 03-02-PLAN.md (Gmail OAuth2, email triage, calendar extraction)
+Next: Execute 04-02-PLAN.md (BlueBubbles iMessage client) -- /gsd:execute-phase 4
