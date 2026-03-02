@@ -39,8 +39,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **COMM-02**: User can approve/reject agent-proposed email actions via inline Telegram buttons (Partial -- approval infrastructure complete in 03-01, email actions require 03-02)
 - [ ] **COMM-03**: Agent extracts calendar events from emails and proposes adding them to Google Calendar
 - [x] **COMM-04**: Telegram bot serves as primary command interface -- HITL approvals, agent queries, status updates, quiet hours
-- [ ] **COMM-05**: Agent reads iMessage conversations via BlueBubbles relay (read-only, business contacts only)
-- [ ] **COMM-06**: iMessage context enriches todo items and check-in suggestions -- "John from Acme texted about the invoice" becomes actionable
+- [x] **COMM-05**: Agent reads iMessage conversations via BlueBubbles relay (read-only, business contacts only)
+- [x] **COMM-06**: iMessage context enriches todo items and check-in suggestions -- "John from Acme texted about the invoice" becomes actionable
 - [ ] **COMM-07**: Agent respects Google Calendar -- no check-ins during meetings, defers non-urgent actions to free slots
 - [ ] **COMM-08**: Notion integration for centralized task/action logging -- all agent actions and captured items visible in one place
 
@@ -49,9 +49,9 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **TASK-01**: User has a centralized todo list in Notion populated automatically from email, meetings, iMessage, and screen observations
 - [x] **TASK-02**: Meeting transcripts from Fellow are pulled and processed -- decisions, action items, and open questions extracted
 - [x] **TASK-03**: Call transcripts from Apple Notes are pulled and processed -- same extraction as Fellow
-- [ ] **TASK-04**: Agent sends proactive check-ins 3-5 times daily via Telegram -- morning priorities, midday status, evening wrap-up
-- [ ] **TASK-05**: Check-ins adapt over a 14-day window based on operator engagement -- learns which time slots get responses
-- [ ] **TASK-06**: Check-in templates have anti-repetition logic -- track last 10, never repeat within 3 days
+- [x] **TASK-04**: Agent sends proactive check-ins 3-5 times daily via Telegram -- morning priorities, midday status, evening wrap-up
+- [x] **TASK-05**: Check-ins adapt over a 14-day window based on operator engagement -- learns which time slots get responses
+- [x] **TASK-06**: Check-in templates have anti-repetition logic -- track last 10, never repeat within 3 days
 
 ### Proposals
 
@@ -150,16 +150,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMM-02 | Phase 3 | Partial -- approval infrastructure in 03-01, email actions in 03-02 |
 | COMM-03 | Phase 3 | Pending |
 | COMM-04 | Phase 3 | Complete |
-| COMM-05 | Phase 4 | Pending |
-| COMM-06 | Phase 4 | Pending |
+| COMM-05 | Phase 4 | Complete |
+| COMM-06 | Phase 4 | Complete |
 | COMM-07 | Phase 3 | Pending |
 | COMM-08 | Phase 3 | Pending |
 | TASK-01 | Phase 4 | Complete |
 | TASK-02 | Phase 4 | Complete |
 | TASK-03 | Phase 4 | Complete |
-| TASK-04 | Phase 4 | Pending |
-| TASK-05 | Phase 4 | Pending |
-| TASK-06 | Phase 4 | Pending |
+| TASK-04 | Phase 4 | Complete |
+| TASK-05 | Phase 4 | Complete |
+| TASK-06 | Phase 4 | Complete |
 | PROP-01 | Phase 5 | Pending |
 | PROP-02 | Phase 5 | Pending |
 | PROP-03 | Phase 5 | Pending |

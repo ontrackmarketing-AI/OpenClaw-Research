@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Secure Infrastructure** - Docker stack, security hardening, n8n proxy, HITL policy, cost circuit breakers, and Tailscale VPN
 - [x] **Phase 2: Memory and Model Routing** - Three-tier memory system, hybrid search, daily log compaction, and 4-tier model routing with fallback chain
 - [x] **Phase 3: Telegram Command Channel** - Telegram bot as primary interface, email triage with approve/reject, calendar event extraction, Notion task logging
-- [ ] **Phase 4: Task Management and Context Capture** - Centralized todo list, meeting/call transcript processing, iMessage context, proactive check-ins with adaptive timing
+- [x] **Phase 4: Task Management and Context Capture** - Centralized todo list, meeting/call transcript processing, iMessage context, proactive check-ins with adaptive timing
 - [ ] **Phase 5: Proposal Pipeline** - Meeting-to-proposal automation with fact extraction, discovery forms, Gamma presentation generation, and CRM-triggered decks
 - [ ] **Phase 6: Per-Task RAG** - Self-improvement flywheel with per-task vector collections, outcome indexing, pre-task recall, write gates, and client knowledge retrieval
 - [ ] **Phase 7: OCR Screen Watching** - Windows screen capture daemon, semantic search over screen history, sensitive content filtering, and context-enriched agent awareness
@@ -86,8 +86,8 @@ Plans:
 
 Plans:
 - [x] 04-01-PLAN.md -- Notion todo database, central aggregator with dedup, transcript extraction pipeline (Fellow REST + Apple Notes AppleScript), email-to-todo wiring [Wave 1]
-- [ ] 04-02-PLAN.md -- BlueBubbles REST client with abstraction layer, privacy-preserving iMessage poller, context extraction for todo enrichment and check-in awareness [Wave 2]
-- [ ] 04-03-PLAN.md -- Proactive check-in engine with 5 daily slots, adaptive timing (14-day engagement tracking), anti-repetition templates, parallel context assembly, LLM personalization, Telegram delivery with response buttons [Wave 2]
+- [x] 04-02-PLAN.md -- BlueBubbles REST client with abstraction layer, privacy-preserving iMessage poller, context extraction for todo enrichment and check-in awareness [Wave 2]
+- [x] 04-03-PLAN.md -- Proactive check-in engine with 5 daily slots, adaptive timing (14-day engagement tracking), anti-repetition templates, parallel context assembly, LLM personalization, Telegram delivery with response buttons [Wave 2]
 
 ### Phase 5: Proposal Pipeline
 **Goal**: Agent automates the meeting-to-proposal workflow -- from transcript analysis through discovery form to Gamma presentation -- with HITL gates at every external touchpoint
@@ -147,7 +147,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | 1. Secure Infrastructure | 3/3 | Complete | 2026-02-28 |
 | 2. Memory and Model Routing | 2/2 | Complete | 2026-03-01 |
 | 3. Telegram Command Channel | 3/3 | Complete | 2026-03-01 |
-| 4. Task Management and Context Capture | 1/3 | In Progress | - |
+| 4. Task Management and Context Capture | 3/3 | Complete | 2026-03-02 |
 | 5. Proposal Pipeline | 0/2 | Not started | - |
 | 6. Per-Task RAG | 0/2 | Not started | - |
 | 7. OCR Screen Watching | 0/2 | Not started | - |

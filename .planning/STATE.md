@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T16:13:53.000Z"
+last_updated: "2026-03-02T19:18:00.000Z"
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 12
-  completed_plans: 10
+  completed_plans: 12
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** The agent removes redundant tasks from the operator's day by watching, learning, and autonomously executing -- getting better at each task every time it does it.
-**Current focus:** Phase 4 in progress -- Todo aggregation and transcript pipeline delivered, iMessage and check-ins next
+**Current focus:** Phase 4 complete -- Todo aggregation, transcript pipeline, iMessage context, and proactive check-ins all delivered. Ready for Phase 5.
 
 ## Current Position
 
-Phase: 4 of 7 (Task Management and Context Capture) -- IN PROGRESS
-Plan: 1 of 3 in current phase (04-01 complete)
-Status: Plan 04-01 delivered -- Notion todo database, transcript extraction, email-to-todo wiring
-Last activity: 2026-03-02 -- Completed 04-01-PLAN.md (Todo aggregation and transcript pipeline)
+Phase: 4 of 7 (Task Management and Context Capture) -- COMPLETE
+Plan: 3 of 3 in current phase (all plans complete)
+Status: Phase 4 fully delivered -- proactive check-in engine with adaptive timing, anti-repetition, LLM personalization
+Last activity: 2026-03-02 -- Completed 04-03-PLAN.md (Proactive check-in engine)
 
-Progress: [██████████████░░░░░░] 66% (Phases 1-3 + P4 plan 1/3)
+Progress: [████████████████░░░░] 80% (Phases 1-4 complete, 4/7 phases)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
+- Total plans completed: 12
 - Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session)
-- Total execution time: ~4 sessions + 30min
+- Total execution time: ~5 sessions + 30min
 
 **By Phase:**
 
@@ -43,13 +43,15 @@ Progress: [██████████████░░░░░░] 66% (Ph
 | 01-secure-infrastructure | 4/4 | cross-session + 80min | - |
 | 02-memory-and-model-routing | 2/2 | 17min | 8.5min |
 | 03-telegram-command-channel | 3/3 | cross-session | - |
-| 04-task-management-and-context-capture | 1/3 | cross-session | - |
+| 04-task-management-and-context-capture | 3/3 | cross-session | - |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (8min), 03-01 (10min), 03-02 (cross-session), 03-03 (cross-session), 04-01 (cross-session)
-- Trend: Phase 4 underway, plan 1 of 3 complete
+- Last 5 plans: 03-02 (cross-session), 03-03 (cross-session), 04-01 (cross-session), 04-02 (cross-session), 04-03 (cross-session)
+- Trend: Phase 4 complete -- all 3 plans delivered. Ready for Phase 5.
 
 *Updated after each plan completion*
+| Phase 04 P03 | cross-session | 3 tasks | 9 files |
+| Phase 04 P02 | cross-session | 2 tasks | 5 files |
 | Phase 04 P01 | cross-session | 3 tasks | 10 files |
 | Phase 03 P01 | 10min | 3 tasks | 15 files |
 | Phase 02 P02 | 8min | 2 tasks | 9 files |
@@ -104,6 +106,16 @@ Recent decisions affecting current work:
 - [04-01]: Fire-and-forget error handling on Notion todo writes -- log errors, never throw (matches action-log pattern)
 - [04-01]: Haiku tier for LLM transcript extraction -- standard task, cost-efficient
 - [04-01]: Chunked extraction for long transcripts (>32000 chars) with merge and dedup on task text
+- [04-02]: BlueBubbles REST API with abstraction layer -- client.ts is the sole swap point if backend changes
+- [04-02]: Business contact whitelist via BUSINESS_CONTACTS env var -- personal messages never processed
+- [04-02]: LLM topic extraction via Ollama tier (free) -- raw message text never persisted
+- [04-02]: In-memory context cache (max 50 entries) for check-in engine -- no disk persistence of message content
+- [04-02]: Graceful degradation without BlueBubbles -- all methods return empty, no crash
+- [04-03]: node-cron for slot scheduling -- lightweight, no external dependency, cron expressions match plan spec
+- [04-03]: SQLite checkin.db separate from approvals.db and cost.db -- dedicated file for check-in engagement isolation
+- [04-03]: Dynamic import for iMessage context -- graceful degradation if 04-02 module not available
+- [04-03]: 2-second timeout on remote context sources -- check-ins send even if calendar/iMessage/memory are slow
+- [04-03]: LLM personalization via routeAndCall with Haiku tier -- cost-efficient for daily recurring task
 
 ### Pending Todos
 
@@ -119,6 +131,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 04-01-PLAN.md (Todo aggregation and transcript pipeline)
+Stopped at: Completed 04-03-PLAN.md (Proactive check-in engine) -- Phase 4 fully complete
 Resume file: None
-Next: Execute 04-02-PLAN.md (BlueBubbles iMessage client) -- /gsd:execute-phase 4
+Next: Plan Phase 5 (Proposal Pipeline) -- /gsd:plan-phase 5
