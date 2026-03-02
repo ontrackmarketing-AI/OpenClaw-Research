@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-03-02T21:02:36Z"
+last_updated: "2026-03-02T21:19:24.449Z"
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 14
-  completed_plans: 13
+  completed_plans: 14
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** The agent removes redundant tasks from the operator's day by watching, learning, and autonomously executing -- getting better at each task every time it does it.
-**Current focus:** Phase 5 in progress -- Proposal pipeline core (Plan 1 of 2 complete). Meeting-to-proposal flow with HITL approval delivered.
+**Current focus:** Phase 5 complete -- Full proposal pipeline with CRM-triggered pitch decks. Meeting-to-proposal and CRM-to-pitch-deck flows both delivered.
 
 ## Current Position
 
-Phase: 5 of 7 (Proposal Pipeline)
-Plan: 1 of 2 in current phase
-Status: Plan 05-01 complete -- proposal pipeline core with transcript analysis, Gamma generation, and RED-tier HITL approval
-Last activity: 2026-03-02 -- Completed 05-01-PLAN.md (Proposal pipeline core)
+Phase: 5 of 7 (Proposal Pipeline) -- COMPLETE
+Plan: 2 of 2 in current phase -- COMPLETE
+Status: Phase 05 complete -- proposal pipeline core + CRM-triggered pitch decks
+Last activity: 2026-03-02 -- Completed 05-02-PLAN.md (CRM-triggered proposals)
 
-Progress: [██████████████████░░] 93% (Phases 1-4 complete + 05-01, 13/14 plans)
+Progress: [████████████████████] 100% (Phases 1-5 complete, 14/14 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
-- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session + 11min)
-- Total execution time: ~5 sessions + 41min
+- Total plans completed: 14
+- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session + 11min + 6min)
+- Total execution time: ~5 sessions + 47min
 
 **By Phase:**
 
@@ -44,13 +44,14 @@ Progress: [██████████████████░░] 93% (Ph
 | 02-memory-and-model-routing | 2/2 | 17min | 8.5min |
 | 03-telegram-command-channel | 3/3 | cross-session | - |
 | 04-task-management-and-context-capture | 3/3 | cross-session | - |
-| 05-proposal-pipeline | 1/2 | 11min | 11min |
+| 05-proposal-pipeline | 2/2 | 17min | 8.5min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (cross-session), 04-02 (cross-session), 04-03 (cross-session), 05-01 (11min)
-- Trend: Phase 5 started -- Plan 1 (proposal pipeline core) delivered in 11 min. Plan 2 (CRM triggers) next.
+- Last 5 plans: 04-02 (cross-session), 04-03 (cross-session), 05-01 (11min), 05-02 (6min)
+- Trend: Phase 5 complete -- both plans delivered in 17 min total. CRM triggers (6 min) faster than core pipeline (11 min) due to reuse.
 
 *Updated after each plan completion*
+| Phase 05 P02 | 6min | 1 task | 5 files |
 | Phase 05 P01 | 11min | 3 tasks | 14 files |
 | Phase 04 P03 | cross-session | 3 tasks | 9 files |
 | Phase 04 P02 | cross-session | 2 tasks | 5 files |
@@ -124,6 +125,11 @@ Recent decisions affecting current work:
 - [05-01]: sendProposalPreview routes through requestApproval (centralized HITL queue) -- RED-tier enforcement via approval-queue.ts
 - [05-01]: Gamma API wrapped in HTTP client class -- MCP protocol abstracted for future runtime swap
 - [05-01]: assemblePitchDeckContent interface defined now for Plan 05-02 CRM trigger consumption
+- [05-02]: Webhook listener returns 200 before reading body -- GHL retries on non-200, immediate response prevents duplicates
+- [05-02]: Dedup via getProposalByContactId checks both trigger source match and active proposal existence
+- [05-02]: Industry context search falls back to hardcoded pain points per-vertical -- safety net until memory has content
+- [05-02]: Contact enrichment via n8n proxy with 5s timeout and graceful degradation to event data
+- [05-02]: node:http createServer used directly (no Express) -- single-route webhook endpoint needs no framework
 
 ### Pending Todos
 
@@ -139,6 +145,6 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 05-01-PLAN.md (Proposal pipeline core)
+Stopped at: Completed 05-02-PLAN.md (CRM-triggered proposals) -- Phase 5 complete
 Resume file: None
-Next: Execute 05-02-PLAN.md (CRM-triggered proposals) -- /gsd:execute-phase 5
+Next: Plan Phase 6 (Per-Task RAG) -- /gsd:plan-phase 6

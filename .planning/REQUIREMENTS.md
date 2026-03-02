@@ -59,8 +59,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **PROP-02**: Agent generates a discovery form from meeting context and sends it to the prospect for deeper information
 - [x] **PROP-03**: Agent generates a Gamma presentation using the saved theme from discovery form responses + meeting context
 - [x] **PROP-04**: User reviews Gamma preview link via Telegram before any proposal is delivered -- always HITL Tier 1
-- [ ] **PROP-05**: Moving a lead to "qualified" in GHL automatically triggers a tailored pitch deck draft via Gamma MCP
-- [ ] **PROP-06**: CRM-triggered decks include industry-specific context pulled from client knowledge RAG
+- [x] **PROP-05**: Moving a lead to "qualified" in GHL automatically triggers a tailored pitch deck draft via Gamma MCP
+- [x] **PROP-06**: CRM-triggered decks include industry-specific context pulled from client knowledge RAG
 
 ### Model Routing
 
@@ -164,8 +164,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PROP-02 | Phase 5 | Complete |
 | PROP-03 | Phase 5 | Complete |
 | PROP-04 | Phase 5 | Complete |
-| PROP-05 | Phase 5 | Pending |
-| PROP-06 | Phase 5 | Pending |
+| PROP-05 | Phase 5 | Complete |
+| PROP-06 | Phase 5 | Complete |
 | MODL-01 | Phase 2 | Complete |
 | MODL-02 | Phase 2 | Deferred |
 | MODL-03 | Phase 2 | Complete |
