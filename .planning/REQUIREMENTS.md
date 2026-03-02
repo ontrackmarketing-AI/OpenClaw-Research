@@ -55,10 +55,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Proposals
 
-- [ ] **PROP-01**: Agent processes a meeting recording into a slide outline using Claude analysis
-- [ ] **PROP-02**: Agent generates a discovery form from meeting context and sends it to the prospect for deeper information
-- [ ] **PROP-03**: Agent generates a Gamma presentation using the saved theme from discovery form responses + meeting context
-- [ ] **PROP-04**: User reviews Gamma preview link via Telegram before any proposal is delivered -- always HITL Tier 1
+- [x] **PROP-01**: Agent processes a meeting recording into a slide outline using Claude analysis
+- [x] **PROP-02**: Agent generates a discovery form from meeting context and sends it to the prospect for deeper information
+- [x] **PROP-03**: Agent generates a Gamma presentation using the saved theme from discovery form responses + meeting context
+- [x] **PROP-04**: User reviews Gamma preview link via Telegram before any proposal is delivered -- always HITL Tier 1
 - [ ] **PROP-05**: Moving a lead to "qualified" in GHL automatically triggers a tailored pitch deck draft via Gamma MCP
 - [ ] **PROP-06**: CRM-triggered decks include industry-specific context pulled from client knowledge RAG
 
@@ -160,10 +160,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TASK-04 | Phase 4 | Complete |
 | TASK-05 | Phase 4 | Complete |
 | TASK-06 | Phase 4 | Complete |
-| PROP-01 | Phase 5 | Pending |
-| PROP-02 | Phase 5 | Pending |
-| PROP-03 | Phase 5 | Pending |
-| PROP-04 | Phase 5 | Pending |
+| PROP-01 | Phase 5 | Complete |
+| PROP-02 | Phase 5 | Complete |
+| PROP-03 | Phase 5 | Complete |
+| PROP-04 | Phase 5 | Complete |
 | PROP-05 | Phase 5 | Pending |
 | PROP-06 | Phase 5 | Pending |
 | MODL-01 | Phase 2 | Complete |
