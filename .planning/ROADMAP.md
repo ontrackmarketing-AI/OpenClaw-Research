@@ -131,11 +131,11 @@ Plans:
   3. Operator can ask "what was I working on for [client]?" and get an accurate summary drawn from screen capture history
   4. Proactive check-ins reference current screen context -- agent knows the operator is in GHL vs. writing an email vs. browsing
   5. Operator can pause and resume OCR capture at any time via a Telegram command
-**Plans**: TBD
+**Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 07-01: Windows capture daemon and sensitive content filter
-- [ ] 07-02: Screen history search and context-enriched check-ins
+- [ ] 07-01-PLAN.md -- Windows capture daemon (mss + Tesseract + SQLite), privacy filter (app/title/incognito/PII exclusions), Supabase schema (pgvector, hybrid search RPC, RLS), content hash dedup, sync service, embed worker (Ollama nomic-embed-text) [Wave 1]
+- [ ] 07-02-PLAN.md -- Screen recall query tool (hybrid vector+FTS search via Supabase RPC), check-in context integration (dynamic import, 2s timeout), /screen Telegram command (pause/resume/delete/status/recall) [Wave 2]
 
 ## Progress
 
