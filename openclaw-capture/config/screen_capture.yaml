@@ -1,0 +1,57 @@
+# OpenClaw Screen Capture Configuration
+# This daemon runs on the Windows desktop machine.
+
+# Capture settings
+capture_interval_seconds: 30
+sync_interval_seconds: 60
+command_poll_seconds: 10
+max_image_width: 1920
+local_image_retention_days: 30
+
+# Supabase connection (filled by user)
+supabase_url: ""
+supabase_service_role_key: ""
+
+# Privacy: excluded applications (case-insensitive match on app name)
+excluded_apps:
+  - "1Password"
+  - "LastPass"
+  - "Bitwarden"
+  - "KeePass"
+  - "KeePassXC"
+  - "Dashlane"
+  - "NordPass"
+
+# Privacy: excluded window title patterns (case-insensitive fnmatch glob)
+excluded_title_patterns:
+  - "*password*"
+  - "*banking*"
+  - "*bank of*"
+  - "*chase*"
+  - "*wells fargo*"
+  - "*paypal*"
+  - "*venmo*"
+  - "*credit card*"
+  - "*signin*"
+  - "*sign in*"
+  - "*log in*"
+  - "*login*"
+
+# Privacy: personal apps to exclude (case-insensitive match on app name)
+excluded_apps_personal:
+  - "Tinder"
+  - "Hinge"
+  - "WhatsApp"
+  - "Signal"
+  - "Discord"
+
+# Privacy: browser incognito/private mode detection (substring match on window title)
+incognito_patterns:
+  - "InPrivate"
+  - "Incognito"
+  - "Private Browsing"
+
+# Privacy: sensitive text patterns (regex, applied post-OCR to redact PII)
+sensitive_text_patterns:
+  - "\\b\\d{4}[- ]?\\d{4}[- ]?\\d{4}[- ]?\\d{4}\\b"   # Credit card numbers
+  - "\\b\\d{3}-\\d{2}-\\d{4}\\b"                         # SSN (XXX-XX-XXXX)
