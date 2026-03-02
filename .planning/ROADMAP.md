@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Secure Infrastructure** - Docker stack, security hardening, n8n proxy, HITL policy, cost circuit breakers, and Tailscale VPN
 - [x] **Phase 2: Memory and Model Routing** - Three-tier memory system, hybrid search, daily log compaction, and 4-tier model routing with fallback chain
-- [ ] **Phase 3: Telegram Command Channel** - Telegram bot as primary interface, email triage with approve/reject, calendar event extraction, Notion task logging
+- [x] **Phase 3: Telegram Command Channel** - Telegram bot as primary interface, email triage with approve/reject, calendar event extraction, Notion task logging
 - [ ] **Phase 4: Task Management and Context Capture** - Centralized todo list, meeting/call transcript processing, iMessage context, proactive check-ins with adaptive timing
 - [ ] **Phase 5: Proposal Pipeline** - Meeting-to-proposal automation with fact extraction, discovery forms, Gamma presentation generation, and CRM-triggered decks
 - [ ] **Phase 6: Per-Task RAG** - Self-improvement flywheel with per-task vector collections, outcome indexing, pre-task recall, write gates, and client knowledge retrieval
@@ -69,8 +69,8 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md -- Telegram bot with grammY (commands, user whitelist, MarkdownV2 formatters) and HITL approval queue (SQLite-backed, YELLOW-tier async approval via inline buttons) [Wave 1]
-- [ ] 03-02-PLAN.md -- Gmail OAuth2 client, email triage engine with LLM classification (Haiku tier), calendar event extraction, periodic polling with historyId, /triage command [Wave 2]
-- [ ] 03-03-PLAN.md -- Google Calendar event insertion with Telegram confirmation, calendar-aware message deferral (freebusy.query), Notion action log database integration [Wave 3]
+- [x] 03-02-PLAN.md -- Gmail OAuth2 client, email triage engine with LLM classification (Haiku tier), calendar event extraction, periodic polling with historyId, /triage command [Wave 2]
+- [x] 03-03-PLAN.md -- Google Calendar event insertion with Telegram confirmation, calendar-aware message deferral (freebusy.query), Notion action log database integration [Wave 3]
 
 ### Phase 4: Task Management and Context Capture
 **Goal**: Operator has a single, automatically populated todo list enriched by meetings, calls, iMessage, and adaptive check-ins -- nothing falls through the cracks
@@ -82,12 +82,12 @@ Plans:
   3. Apple Notes call transcripts are pulled and processed with the same extraction quality as Fellow
   4. Operator receives 3-5 proactive check-ins per day via Telegram -- morning priorities, midday status, evening wrap-up -- with no repeated template within 3 days
   5. Check-in timing adapts over 14 days based on which time slots get operator responses -- low-engagement slots are dropped automatically
-**Plans**: TBD
+**Plans**: 3 plans in 2 waves
 
 Plans:
-- [ ] 04-01: Todo aggregation and transcript processing
-- [ ] 04-02: iMessage context via BlueBubbles
-- [ ] 04-03: Proactive check-in engine
+- [ ] 04-01-PLAN.md -- Notion todo database, central aggregator with dedup, transcript extraction pipeline (Fellow REST + Apple Notes AppleScript), email-to-todo wiring [Wave 1]
+- [ ] 04-02-PLAN.md -- BlueBubbles REST client with abstraction layer, privacy-preserving iMessage poller, context extraction for todo enrichment and check-in awareness [Wave 2]
+- [ ] 04-03-PLAN.md -- Proactive check-in engine with 5 daily slots, adaptive timing (14-day engagement tracking), anti-repetition templates, parallel context assembly, LLM personalization, Telegram delivery with response buttons [Wave 2]
 
 ### Phase 5: Proposal Pipeline
 **Goal**: Agent automates the meeting-to-proposal workflow -- from transcript analysis through discovery form to Gamma presentation -- with HITL gates at every external touchpoint
@@ -145,8 +145,8 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Secure Infrastructure | 3/3 | Complete | 2026-02-28 |
-| 2. Memory and Model Routing | 0/2 | Not started | - |
-| 3. Telegram Command Channel | 1/3 | In progress | - |
+| 2. Memory and Model Routing | 2/2 | Complete | 2026-03-01 |
+| 3. Telegram Command Channel | 3/3 | Complete | 2026-03-01 |
 | 4. Task Management and Context Capture | 0/3 | Not started | - |
 | 5. Proposal Pipeline | 0/2 | Not started | - |
 | 6. Per-Task RAG | 0/2 | Not started | - |
