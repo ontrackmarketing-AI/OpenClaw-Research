@@ -79,9 +79,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### OCR Screen Watching
 
-- [ ] **OCRW-01**: Windows Python daemon captures screen every 30 seconds via mss, OCR processes via Tesseract
-- [ ] **OCRW-02**: Captured text stored in Supabase with pgvector embeddings for semantic search
-- [ ] **OCRW-03**: Sensitive content classifier filters out password managers, banking, and personal apps before any capture reaches agent
+- [x] **OCRW-01**: Windows Python daemon captures screen every 30 seconds via mss, OCR processes via Tesseract
+- [x] **OCRW-02**: Captured text stored locally with Qdrant 768-dim vector embeddings for semantic search (changed from Supabase to local Qdrant + SQLite)
+- [x] **OCRW-03**: Sensitive content classifier filters out password managers, banking, and personal apps before any capture reaches agent
 - [x] **OCRW-04**: Agent can answer "what was I working on for [client]?" by querying screen history
 - [x] **OCRW-05**: Screen context enriches proactive check-ins -- agent knows current work context when sending messages
 
@@ -175,9 +175,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PRAG-03 | Phase 6 | Complete |
 | PRAG-04 | Phase 6 | Complete |
 | PRAG-05 | Phase 6 | Complete |
-| OCRW-01 | Phase 7 | Pending |
-| OCRW-02 | Phase 7 | Pending |
-| OCRW-03 | Phase 7 | Pending |
+| OCRW-01 | Phase 7 | Complete |
+| OCRW-02 | Phase 7 | Complete |
+| OCRW-03 | Phase 7 | Complete |
 | OCRW-04 | Phase 7 | Complete |
 | OCRW-05 | Phase 7 | Complete |
 
