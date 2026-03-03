@@ -16,7 +16,7 @@ logger = logging.getLogger("openclaw-capture.offline")
 
 def get_unsynced_count(db_path: str) -> int:
     """
-    Count captures that have not yet been synced to Supabase.
+    Count captures that have not yet been synced to Mac receiver.
 
     Args:
         db_path: Path to local SQLite database.
