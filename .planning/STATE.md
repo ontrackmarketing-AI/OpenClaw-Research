@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-02T22:22:08.766Z"
+status: complete
+last_updated: "2026-03-03T01:01:10Z"
 progress:
   total_phases: 7
-  completed_phases: 6
-  total_plans: 16
-  completed_plans: 16
+  completed_phases: 7
+  total_plans: 18
+  completed_plans: 18
 ---
 
 # Project State
@@ -18,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-27)
 
 **Core value:** The agent removes redundant tasks from the operator's day by watching, learning, and autonomously executing -- getting better at each task every time it does it.
-**Current focus:** Phase 6 complete -- Per-task RAG fully delivered (collections, outcome indexing, write gates, pre-task recall, client knowledge).
+**Current focus:** Phase 7 complete -- OCR Screen Watching fully delivered (capture pipeline, query tool, check-in integration, Telegram commands).
 
 ## Current Position
 
-Phase: 6 of 7 (Per-Task RAG) -- COMPLETE
+Phase: 7 of 7 (OCR Screen Watching) -- COMPLETE
 Plan: 2 of 2 in current phase -- COMPLETE
-Status: Phase 06 complete -- pre-task recall with confirmed weighting, client knowledge RAG with dedup
-Last activity: 2026-03-02 -- Completed 06-02-PLAN.md (recall pipeline + client knowledge)
+Status: Phase 07 complete -- screen recall via Qdrant, check-in screen context, /screen Telegram command
+Last activity: 2026-03-03 -- Completed 07-02-PLAN.md (screen query and integration)
 
-Progress: [█████████████████░░░] 86% (Phases 1-6 complete, Phase 7 not yet planned)
+Progress: [████████████████████] 100% (All 7 phases complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 15
-- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session + 11min + 6min + 6min)
-- Total execution time: ~5 sessions + 53min
+- Total plans completed: 18
+- Average duration: mixed (cross-session + 7min + 70min + 3min + 9min + 8min + 10min + cross-session + 11min + 6min + 6min + 45min + 15min)
+- Total execution time: ~5 sessions + 113min
 
 **By Phase:**
 
@@ -46,12 +46,15 @@ Progress: [█████████████████░░░] 86% (Ph
 | 04-task-management-and-context-capture | 3/3 | cross-session | - |
 | 05-proposal-pipeline | 2/2 | 17min | 8.5min |
 | 06-per-task-rag | 2/2 | 13min | 6.5min |
+| 07-ocr-screen-watching | 2/2 | 60min | 30min |
 
 **Recent Trend:**
-- Last 5 plans: 05-01 (11min), 05-02 (6min), 06-01 (6min), 06-02 (7min)
-- Trend: Phase 6 complete in 13 min total. 192 test assertions across 5 suites.
+- Last 5 plans: 06-01 (6min), 06-02 (7min), 07-01 (45min), 07-02 (15min)
+- Trend: Phase 7 complete in 60 min total. 22 query tests + existing embed-worker tests.
 
 *Updated after each plan completion*
+| Phase 07 P02 | 15min | 2 tasks | 7 files |
+| Phase 07 P01 | 45min | 3 tasks | 15 files |
 | Phase 06 P02 | 7min | 2 tasks | 7 files |
 | Phase 06 P01 | 6min | 3 tasks | 9 files |
 | Phase 05 P02 | 6min | 1 task | 5 files |
@@ -143,6 +146,13 @@ Recent decisions affecting current work:
 - [06-02]: postExecutionHook auto-indexes client knowledge -- zero-effort integration for skill callers
 - [06-02]: formatLessons priority: errors > corrections > patterns > successes with 2000-char cap
 - [06-02]: skipOllama defaults to true for pre-execution hook -- classification tasks don't benefit from recall
+- [07-01]: Replaced Supabase with local Qdrant + SQLite + HTTP receiver -- user uses 5G with rotating IPs, everything stays local
+- [07-01]: Mac HTTP receiver on port 7890 using node:http -- minimal dependencies, no Express
+- [07-01]: mDNS hostname instead of hardcoded IP for cross-machine discovery
+- [07-01]: Embed worker reuses shared embed() from vector-search.ts -- consistent with Phase 6 patterns
+- [07-02]: Qdrant vector search with score_threshold 0.3 -- screen OCR text is noisier than memory content, needs broader matching
+- [07-02]: handleScreenCommand export pattern -- allows lazy dynamic import inside /screen handler, matching /triage pattern
+- [07-02]: Local SQLite for all /screen status/command operations -- no network dependency for pause/resume/delete/status
 
 ### Pending Todos
 
@@ -152,12 +162,12 @@ None yet.
 
 - [Phase 5]: Gamma MCP access is gated -- must confirm API access before planning Phase 5. Fallback: manual Gamma + Telegram outline notification.
 - [Phase 4]: BlueBubbles June 2026 Apple API deprecation -- Phase 4 iMessage work must complete before June or have contingency.
-- [Phase 7]: Supabase project is paused (jitawzicdwgbhatvjblh) -- must reactivate and confirm Pro tier before Phase 7.
+- [Phase 7]: RESOLVED -- Supabase replaced with local Qdrant + SQLite. No cloud dependency needed.
 - [Phase 4]: Fellow API requires workspace admin toggle -- confirm access level before planning Phase 4.
 
 ## Session Continuity
 
-Last session: 2026-03-02
-Stopped at: Completed 06-02-PLAN.md (recall pipeline + client knowledge)
+Last session: 2026-03-03
+Stopped at: Completed 07-02-PLAN.md (screen query and integration)
 Resume file: None
-Next: Phase 7 (OCR Screen Watching) needs planning and execution.
+Next: All 7 phases complete. Milestone v1.0 delivered.
